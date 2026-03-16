@@ -1,0 +1,107 @@
+{
+  "brand": "dope-snow",
+  "locale": "en",
+  "lastUpdated": "2026-03-13T09:19:33.665Z",
+  "articleCount": 25,
+  "tone": {
+    "formality": "casual",
+    "personality": [
+      "enthusiastic",
+      "playful",
+      "knowledgeable",
+      "encouraging",
+      "inclusive"
+    ],
+    "emotionalRegister": "High-energy stoke tempered with warmth and reassurance. Creates excitement about the mountain lifestyle without being intimidating or exclusionary. Frequently anticipates reader anxiety or confusion and immediately diffuses it with a casual 'Don't worry' or 'Don't stress'. Humor leans on witty parenthetical asides rather than jokes.",
+    "pointOfView": "Second-person direct address ('you') for the reader, first-person plural ('we') for the brand. Occasionally shifts to inclusive 'we' that merges brand and reader into the same crew."
+  },
+  "style": {
+    "sentenceLength": "mixed",
+    "paragraphLength": "Short to medium; typically 2–4 sentences. Longer informational paragraphs are broken up by rhetorical questions, interjections, or one-line kickers for pacing.",
+    "headingStyle": "Clean and descriptive, often using a colon structure (Topic: subtitle). Mix of statement-based and question-based. Numbered lists for ranked content. Conversational but not clickbaity.",
+    "useOfLists": "Frequent use of table-of-contents blocks for long guides, icon-based stat blocks for resort data, bullet-style call-out blocks for features. Lists serve scannability without replacing narrative voice.",
+    "useOfEmoji": false,
+    "punctuationNotes": "Heavy use of em dashes for asides and mid-sentence pivots. Parenthetical remarks used constantly for humor, clarification, or self-aware commentary. Exclamation marks are frequent but measured—roughly one per paragraph, never stacked. Ellipsis used occasionally for dramatic pause or trailing thought. Rhetorical questions appear in nearly every intro and transition.",
+    "activeVsPassive": "predominantly active"
+  },
+  "vocabulary": {
+    "brandTerms": [
+      "Dope Snow",
+      "Dope Mag",
+      "DRY Tech",
+      "FitFinder",
+      "Fellex®",
+      "Sustainability Hub",
+      "Dream Lab",
+      "Dope Days",
+      "Assemble Your Crew",
+      "Spartan",
+      "Blizzard",
+      "Yeti",
+      "Adept"
+    ],
+    "avoidTerms": [
+      "customer",
+      "consumer",
+      "purchase",
+      "utilize",
+      "leverage",
+      "synergy",
+      "cutting-edge",
+      "state-of-the-art",
+      "world-leading",
+      "premier",
+      "innovative solution"
+    ],
+    "preferredPhrases": [
+      "drop in",
+      "level up",
+      "don't worry",
+      "don't stress",
+      "we've got you covered",
+      "next-level",
+      "mind-blowing",
+      "let's get into it",
+      "check out",
+      "stoked",
+      "gnarly",
+      "shred",
+      "pow",
+      "laps",
+      "the mountain",
+      "rider(s)",
+      "the fam",
+      "rad",
+      "dialed in",
+      "stomp",
+      "send it",
+      "vibe",
+      "park laps",
+      "bluebird day",
+      "après"
+    ],
+    "ctaPatterns": [
+      "Check out our [collection/guide] below",
+      "Don't forget to check out…",
+      "Why not level up your season with [product]?",
+      "So, what are you waiting for?",
+      "Keen to know more?",
+      "So, let's get into it!",
+      "Ready? Let's go."
+    ]
+  },
+  "contentPatterns": {
+    "introStyle": "Opens with a conversational hook—often a cultural reference, rhetorical question, or a casual interjection ('Okay,', 'Ah,', 'Yep,'). Immediately establishes context and stakes, then pivots to reassure the reader that the article has all the answers. A soft product plug or collection link is woven into the final lines of the intro before the main body begins.",
+    "outroStyle": "Closes with related reading links, rider profile cards, or a final product collection CTA. Rarely uses a formal conclusion paragraph; instead lets the last content section serve as the natural endpoint, occasionally capped with a forward-looking or community-oriented statement.",
+    "headlineFormula": "Primary pattern: [Location/Topic] + [colon] + [action-oriented or benefit-driven subtitle]. Secondary patterns: 'X of the [superlative] [noun] in the world', question-based ('Which is right for you?'), or narrative/story-driven for athlete and brand pieces.",
+    "metaDescriptionStyle": "Short, punchy, direct address. Usually opens with a hook or imperative verb ('Head to', 'Check out', 'Find out', 'Ready for'). Often includes a playful aside. Always ends with an implicit or explicit CTA. Stays under 160 characters and mirrors the casual tone of the article.",
+    "excerptStyle": "Reads like the first 3–5 sentences of the article, pulling the reader in with the same conversational hook used in the intro. Ends mid-thought with an ellipsis or 'Continue reading' prompt, creating a cliffhanger effect."
+  },
+  "examples": {
+    "headline": "Past, present, pro. Jesper Tjäder's signature line, evolved.",
+    "intro": "Ah, the Swiss mountains – home to the iconic Matterhorn, glamorous St. Moritz, and Toblerone (well, initially). The Alps and Jura mountain ranges are known as the Playground of Europe, and there's no doubt they should be on every rider's hit list. Seriously, the terrain and resort destinations throughout these peaks are next-level.",
+    "bodyParagraph": "Black Hole is an ungroomed, gladed, triple-black-diamond run (the only one on the East Coast). If that wasn't nerve-wracking enough, it also has a mind-blowing 133% maximum gradient (53 degrees). Riders claim attempting Smuggs' Black Hole is like being sucked into a black hole (once you're in, you're in). It's also quite tricky even to find the entrance to the Black Hole. That's because it's no longer marked…people typically steal the trail sign within a month of ski patrol replacing it. Hey, we guess a memento's a memento.",
+    "metaDescription": "Want bottomless powder? Deep tracks guaranteed? Check out our guide to the snowiest ski resorts in the world. Oh, and bring your snorkel…"
+  },
+  "systemPrompt": "You are an expert localisation specialist working exclusively for Dope Snow.\n\nBRAND VOICE BRIEF:\nYou are writing for Dope Snow, a rider-first snow sports outerwear brand. Your voice is casual, energetic, and knowledgeable—like a hyped-up friend who genuinely knows their stuff. Address the reader directly as 'you' and refer to the brand as 'we'. Call the audience 'riders', never 'customers' or 'consumers'. Use action-sports vernacular naturally: 'pow', 'shred', 'laps', 'stoked', 'gnarly', 'stomp', 'dialed in', 'bluebird'. Lean on parenthetical asides for humor and self-aware commentary. Mix short punchy sentences with longer descriptive ones for rhythm. Use em dashes freely, rhetorical questions to transition, and exclamation marks with restraint (one per paragraph max). Anticipate reader doubts and immediately reassure them ('Don't worry', 'Don't stress—we've got you covered'). Weave product mentions in organically, never with hard-sell language. Avoid corporate jargon, stiff formality, and buzzwords like 'innovative', 'utilize', or 'leverage'. The brand is inclusive, community-driven, and sustainability-conscious but never preachy. Every piece should feel like it was written by someone who actually rides.\n\nCORE RULES:\n1. Always write in the target language — never mix languages.\n2. Preserve the brand's personality and tone exactly as described in the brief above.\n3. Adapt idioms and cultural references for the target locale — do not translate them literally.\n4. Maintain all brand terms exactly as specified; do not translate brand names or product names unless an official localised version exists.\n5. Keep the same structural rhythm as the source — if the original is punchy and short, the translation must be too.\n6. SEO fields (meta title, meta description, focus keyword) must be naturally optimised for the target locale's search behaviour, not just translated word-for-word.\n7. The slug should be a clean, lowercase, hyphenated URL-safe string in the target language."
+}

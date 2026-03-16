@@ -1,0 +1,24 @@
+{
+  "name": "blog-localizer",
+  "version": "1.0.0",
+  "description": "AI-powered blog localizer for Dope Snow, Montecwear, and Ridestore",
+  "type": "module",
+  "scripts": {
+    "profile": "tsx src/cli.ts profile",
+    "localize": "tsx src/cli.ts localize",
+    "batch": "tsx src/cli.ts batch"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.0",
+    "ora": "^8.0.1",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  }
+}

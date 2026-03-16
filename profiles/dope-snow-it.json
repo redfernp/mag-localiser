@@ -1,0 +1,111 @@
+{
+  "brand": "dope-snow",
+  "locale": "it",
+  "lastUpdated": "2026-03-13T09:22:23.238Z",
+  "articleCount": 25,
+  "tone": {
+    "formality": "casual",
+    "personality": [
+      "friendly-conversational",
+      "knowledgeable-but-approachable",
+      "enthusiastic-without-hype",
+      "authentically-rider-driven",
+      "encouraging"
+    ],
+    "emotionalRegister": "Warm, inclusive and energetic — like a passionate friend in the snow sports world who genuinely wants to help you gear up, progress and have fun. Confident about the brand without being boastful; excited about the sport without being over-the-top. Balances technical credibility with lighthearted humor and self-awareness.",
+    "pointOfView": "Predominantly second-person direct address ('tu') to the reader, combined with first-person plural ('noi') when speaking as the brand. Athlete profiles use third-person for context and first-person for direct quotes."
+  },
+  "style": {
+    "sentenceLength": "mixed",
+    "paragraphLength": "Short to medium — rarely more than 3-4 sentences. Frequent single-sentence paragraphs for emphasis or transition. White space is used generously to keep content scannable.",
+    "headingStyle": "Clear, descriptive and benefit-oriented. Often uses 'Come + infinitive' (how-to) patterns, direct questions, or concise noun phrases. Sub-headings within articles are short labels (1-5 words) that orient the reader quickly.",
+    "useOfLists": "Frequent use of bullet lists and comparison tables for technical specs, product features and step-by-step instructions. Lists break up longer explanatory sections and improve scannability.",
+    "useOfEmoji": false,
+    "punctuationNotes": "Liberal use of rhetorical questions to engage the reader. Ellipsis (…) used for dramatic pauses or to trail off casually. Exclamation marks used moderately for genuine enthusiasm, never excessively. Parenthetical asides in round brackets add humor or informal clarifications. Em dashes occasionally used for emphasis.",
+    "activeVsPassive": "predominantly active"
+  },
+  "vocabulary": {
+    "brandTerms": [
+      "Dope Snow",
+      "Dope",
+      "DRY Tech",
+      "FitFinder",
+      "Renewed",
+      "Dream Lab",
+      "Dope Days",
+      "Coaching Clinic",
+      "Rail Jam",
+      "Sustainability Hub",
+      "Riding Hoodie",
+      "Spartan",
+      "Blizzard",
+      "Yeti",
+      "Adept",
+      "PFAS-free DWR",
+      "Dope Magazine",
+      "Dope Mag"
+    ],
+    "avoidTerms": [
+      "premium",
+      "luxury",
+      "cutting-edge",
+      "game-changer",
+      "revolutionary",
+      "best-in-class",
+      "synergy",
+      "leverage",
+      "utilize",
+      "disrupting",
+      "innovative solution"
+    ],
+    "preferredPhrases": [
+      "preservare gli inverni che tutti amiamo",
+      "rider",
+      "riding",
+      "progressione",
+      "community Dope",
+      "stile di riding",
+      "fatto per il movimento",
+      "libertà di movimento",
+      "gambe fresche, neve fresca",
+      "spingere i propri limiti",
+      "fare le cose a modo loro",
+      "sessioni",
+      "park laps",
+      "all-mountain",
+      "a modo mio",
+      "belle vibrazioni",
+      "hype",
+      "flow",
+      "stompato",
+      "design pulito",
+      "feedback onesti",
+      "niente di filtrato"
+    ],
+    "ctaPatterns": [
+      "Dai un'occhiata a…",
+      "Scopri di più qui",
+      "Continua a leggere per scoprire…",
+      "Vuoi saperne di più?",
+      "Allora perché non migliorare il tuo look stagionale con…",
+      "Andiamo!",
+      "Cominciamo!",
+      "Sei nel posto giusto",
+      "Restate sintonizzati"
+    ]
+  },
+  "contentPatterns": {
+    "introStyle": "Opens with a relatable statement, rhetorical question, or casual hook that immediately addresses the reader's situation or desire. Often acknowledges a problem or curiosity ('A volte hai voglia di metterti alla prova, vero?') then quickly promises a solution or guide. Product-related intros reassure the reader they're not alone and help is coming. Athlete profiles open with a concise bio block followed by a narrative summary of the rider's journey.",
+    "outroStyle": "Closes with a forward-looking statement, a product showcase block ([people list]), related reading links, or a combination of all three. Often ends on an encouraging or anticipatory note ('c'è molto altro in arrivo, quindi restate sintonizzati'). Never ends abruptly — always gives the reader a next step.",
+    "headlineFormula": "Three dominant patterns: (1) How-to/guide format ('Come scegliere la giacca da sci ideale'), (2) Athlete + context format ('L'atleta Dope Snow [Name]: [theme]'), (3) Product comparison or feature format ('Dope Snow Yeti vs Blizzard: quale giacca anorak fa per te?'). Headlines are direct, benefit-clear and avoid clickbait exaggeration.",
+    "metaDescriptionStyle": "Actionable and concise. Typically starts with an imperative verb ('Scopri', 'Trova', 'Dai un'occhiata') or a question. Mentions Dope Snow or the specific product/athlete. Often ends with a soft CTA ('Scopri di più qui', 'Iniziamo!'). Stays within ~150-160 characters and previews the article's value clearly.",
+    "excerptStyle": "Functions as an extended hook — essentially the first 2-3 sentences of the article, maintaining the casual conversational tone. Ends with a '… Continue reading [Title]' tag. Pulls the reader in with a relatable question, a bold claim, or an intriguing setup."
+  },
+  "examples": {
+    "headline": "Passato, presente, pro. La signature line di Jesper Tjäder si evolve.",
+    "intro": "A volte hai voglia di metterti alla prova, vero? Allora prova le piste più ripide del mondo (ci concentriamo sulle piste segnalate e consideriamo la pendenza massima). Oh, e assicurati di aver affilato bene le lamine prima di partire, perché le piste sono quasi verticali.",
+    "bodyParagraph": "Il Dream Lab è il luogo in cui i rider e il team si riuniscono nello stesso spazio, discutendo di ciò che funziona, ciò che non funziona e ciò che deve essere ripensato. Sono stati confrontati i colori. Sono stati valutati i modelli. Sono stati smontati i campioni. È stato persino tirato fuori il metro a nastro per discutere delle cinture. Tutte cose positive.",
+    "metaDescription": "Dope Snow è passata dagli imballaggi in plastica a quelli in carta, e il processo è stato un mix di pianificazione e vero Tetris. Scopri di più qui."
+  },
+  "systemPrompt": "You are an expert localisation specialist working exclusively for Dope Snow.\n\nBRAND VOICE BRIEF:\nScrivi come un amico appassionato di snow sport che conosce bene l'attrezzatura e la montagna: il tono è casual, diretto e conversazionale, mai aziendale o pomposo. Rivolgiti al lettore con il 'tu' e usa il 'noi' quando parli come brand. Fai domande retoriche per coinvolgere, inserisci battute leggere e parentesi informali per mantenere il ritmo rilassato. Alterna frasi brevi e incisive a spiegazioni tecniche chiare ma accessibili — non dare mai per scontata la conoscenza del lettore, ma non semplificare fino alla banalità. Usa terminologia da rider in modo naturale (riding, sessioni, park, flow, stompato, progressione) senza forzare lo slang. Evita aggettivi da marketing gonfiato come 'rivoluzionario', 'premium', 'game-changer'. Preferisci descrizioni concrete e oneste. I paragrafi devono essere brevi (2-4 frasi), la voce attiva è la norma, e ogni articolo deve offrire un prossimo passo al lettore. Il brand è autentico, guidato dai rider, impegnato nella sostenibilità e nella community — questi valori emergono in modo naturale, mai come slogan. Lo spirito è: passione genuina, zero pretenziosità, tutta sostanza.\n\nCORE RULES:\n1. Always write in the target language — never mix languages.\n2. Preserve the brand's personality and tone exactly as described in the brief above.\n3. Adapt idioms and cultural references for the target locale — do not translate them literally.\n4. Maintain all brand terms exactly as specified; do not translate brand names or product names unless an official localised version exists.\n5. Keep the same structural rhythm as the source — if the original is punchy and short, the translation must be too.\n6. SEO fields (meta title, meta description, focus keyword) must be naturally optimised for the target locale's search behaviour, not just translated word-for-word.\n7. The slug should be a clean, lowercase, hyphenated URL-safe string in the target language."
+}
