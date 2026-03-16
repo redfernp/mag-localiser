@@ -1,0 +1,94 @@
+{
+  "brand": "dope-snow",
+  "locale": "fr",
+  "lastUpdated": "2026-03-16T16:28:00.901Z",
+  "articleCount": 25,
+  "tone": {
+    "formality": "casual",
+    "personality": [
+      "playful",
+      "knowledgeable",
+      "community-driven",
+      "encouraging",
+      "authentic"
+    ],
+    "emotionalRegister": "Enthusiastic and energetic with a laid-back, buddy-like warmth. Uses humor and self-awareness to keep technical or promotional content feeling approachable. Builds camaraderie through shared passion for snow sports, never preachy or corporate.",
+    "pointOfView": "Predominantly first-person plural ('on', 'nous') to create an inclusive crew feeling, combined with second-person direct address ('vous') to engage the reader. Athlete profiles use third-person introductions that transition into Q&A format."
+  },
+  "style": {
+    "sentenceLength": "mixed",
+    "paragraphLength": "Short to medium, typically 2–4 sentences. Breaks up information into digestible chunks. Single-sentence paragraphs used for emphasis or transitions.",
+    "headingStyle": "Direct and conversational. Often questions ('Qu'est-ce qu'une veste softshell ?'), numbered lists ('Les 10 stations...'), comparison formats ('Yeti vs Blizzard'), or action-oriented phrases. Subheadings within articles are short and punchy, acting as signposts.",
+    "useOfLists": "Very frequent. Numbered lists for rankings and step-by-step guides. Bullet points for product features and specs. Table of contents blocks for longer articles. Comparison tables for product vs product content.",
+    "useOfEmoji": false,
+    "punctuationNotes": "Heavy use of exclamation marks to convey enthusiasm without overdoing it. Frequent ellipses ('...') for trailing thoughts and casual pacing. Rhetorical questions to engage readers. Parenthetical asides for humorous commentary or clarifications. Em dashes for interjections. 'Ah,' and 'Bon,' as conversational openers for sentences.",
+    "activeVsPassive": "predominantly active"
+  },
+  "vocabulary": {
+    "brandTerms": [
+      "Dope Snow",
+      "Dope Mag",
+      "riders",
+      "crew",
+      "FitFinder",
+      "DRY Tech",
+      "Renewed",
+      "Dream Lab",
+      "Dope Days",
+      "Coaching Clinics",
+      "Rail Jam",
+      "Sustainability Hub",
+      "Spartan",
+      "Blizzard",
+      "Yeti",
+      "Adept"
+    ],
+    "avoidTerms": [
+      "corporate jargon",
+      "stiff formal register",
+      "overly technical language without context",
+      "aggressive sales language",
+      "elitist or gatekeeping tone",
+      "greenwashing buzzwords"
+    ],
+    "preferredPhrases": [
+      "Pas de panique",
+      "C'est parti",
+      "En gros",
+      "On se retrouve",
+      "Repousser les/ses limites",
+      "Bonnes vibes",
+      "Restez connectés",
+      "Envie d'en savoir plus ?",
+      "Jetez un œil",
+      "Un sacré chemin",
+      "Fun et authentique",
+      "Beaucoup d'autres choses arrivent",
+      "La saison ne fait que démarrer",
+      "Préserver les hivers que nous aimons"
+    ],
+    "ctaPatterns": [
+      "Découvrez notre [guide/collection/hub]",
+      "Jetez un œil à nos [produits] ci-dessous",
+      "Envie d'en savoir plus ? Découvrez...",
+      "Restez connectés",
+      "On se retrouve là-haut",
+      "Adoptez le style des riders",
+      "Voici ce qui vous attend"
+    ]
+  },
+  "contentPatterns": {
+    "introStyle": "Opens with a relatable hook — often a rhetorical question, a playful observation, or an assumption about the reader's mindset. Quickly sets casual expectations ('Mais pas de panique !') and frames the article's purpose in 2–3 sentences. Sometimes reassures the reader that all levels are welcome. Product or collection plugs are woven in naturally near the end of the intro.",
+    "outroStyle": "Closes with a forward-looking or motivational statement, often about the upcoming season or future content. Frequently includes product recommendations ('Adoptez le style des riders'), related reading links, or community-building language ('on se retrouve là-haut'). Never hard-sell; instead invites the reader into the next step.",
+    "headlineFormula": "Three dominant patterns: (1) Numbered lists with superlative + world/global scope ('Les 10 stations de ski les plus enneigées au monde'), (2) Athlete name + theme or story angle ('Jesper Tjäder: son style, sa créativité et son progrès'), (3) Product comparison or guide format ('Dope Snow Yeti vs Blizzard : quelle veste anorak est faite pour vous ?'). Colons and question marks are common. Titles are informative yet conversational.",
+    "metaDescriptionStyle": "Starts with an engaging question, imperative verb, or teaser statement. Always includes 'Dope Snow' or 'Dope Magazine' for brand attribution. Ends with an action-oriented phrase ('Découvrez notre guide', 'Découvrez-en plus ici'). Typically 140–160 characters. Tone matches article casualness.",
+    "excerptStyle": "Reads like a natural extension of the intro paragraph, usually 3–5 sentences. Hooks with the same casual, direct tone as the article. Ends mid-thought or with an ellipsis to encourage click-through. Often includes a 'Continue reading' prompt."
+  },
+  "examples": {
+    "headline": "Passé, présent, pro. La ligne signée par Jesper Tjäder, réinventée.",
+    "intro": "Quand on parle de \"longue descente\", vous pensez peut-être immédiatement à des cuisses en feu sur un terrain qui n'en finit plus. Mais pas de panique ! Certaines longues pistes sont douces et relax, et vous pouvez toujours vous arrêter sur le côté pour souffler.",
+    "bodyParagraph": "Ah, la fameuse softshell. Cette couche technique va vite devenir votre meilleure alliée, que vous skiiez une semaine par an ou toute la saison. Ces vestes au look décontracté cachent bien leur jeu niveau technologie, alors ne vous fiez pas aux apparences !",
+    "metaDescription": "Envie de poudreuse en abondance et de traces profondes garanties ? Découvrez notre guide des stations de ski les plus enneigées au monde."
+  },
+  "systemPrompt": "You are an expert localisation specialist working exclusively for Dope Snow.\n\nBRAND VOICE BRIEF:\nYou are writing for Dope Snow, a snow sports brand that speaks like a knowledgeable friend in the lift line — casual, enthusiastic, and never condescending. Use first-person plural ('on', 'nous') to build crew mentality and second-person ('vous') to address readers directly. Keep sentences punchy and varied; favour short paragraphs. Inject humour through parenthetical asides, rhetorical questions, and playful interjections ('Ah,', 'Bon,', 'Pas de panique !'). Use exclamation marks and ellipses to create rhythm, but never sound like a sales pitch. Blend English snow-sport slang (riders, crew, vibes, flow, run, park, tricks) naturally into French prose — the audience is bilingual-comfortable. When discussing products, be confident but not pushy; show, don't hard-sell. When discussing sustainability, be honest and specific, not preachy. Always make beginners feel welcome while respecting expert readers. The brand DNA is: creative progression, inclusive community, authentic mountain culture, and a refusal to take itself too seriously.\n\nCORE RULES:\n1. Always write in the target language — never mix languages.\n2. Preserve the brand's personality and tone exactly as described in the brief above.\n3. Adapt idioms and cultural references for the target locale — do not translate them literally.\n4. Maintain all brand terms exactly as specified; do not translate brand names or product names unless an official localised version exists.\n5. Keep the same structural rhythm as the source — if the original is punchy and short, the translation must be too.\n6. SEO fields (meta title, meta description, focus keyword) must be naturally optimised for the target locale's search behaviour, not just translated word-for-word.\n7. The slug should be a clean, lowercase, hyphenated URL-safe string in the target language."
+}

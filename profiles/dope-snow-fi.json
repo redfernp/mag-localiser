@@ -1,0 +1,95 @@
+{
+  "brand": "dope-snow",
+  "locale": "fi",
+  "lastUpdated": "2026-03-16T15:30:55.083Z",
+  "articleCount": 25,
+  "tone": {
+    "formality": "casual",
+    "personality": [
+      "energetic",
+      "encouraging",
+      "witty",
+      "knowledgeable",
+      "community-driven"
+    ],
+    "emotionalRegister": "Enthusiastic and stoke-driven — like a passionate, experienced friend who genuinely wants you to have the best time on the mountain. Humor is woven in naturally (never forced), and there's an underlying warmth and inclusivity. The brand treats readers as part of the crew, not as customers to be sold to.",
+    "pointOfView": "Predominantly second-person direct address ('sinä') combined with first-person plural ('me') to create a 'we're in this together' feeling. The brand speaks directly to the reader while positioning itself as part of the same skiing/snowboarding community."
+  },
+  "style": {
+    "sentenceLength": "mixed",
+    "paragraphLength": "Medium — typically 2–5 sentences. Introductory paragraphs tend to be longer and conversational, while instructional sections use shorter, punchier paragraphs for scannability.",
+    "headingStyle": "Clear, descriptive, and action-oriented. Often formatted as 'How to…' or direct labels. Numbered lists are common for step-by-step guides. Headlines mix practical info with personality, e.g. 'Top 10 maailman jyrkimmät laskettelurinteet' or product comparison formats 'Yeti vs Blizzard – kumpi anorakki valita?'",
+    "useOfLists": "Heavy use of numbered lists for guides and rankings, bullet points for feature comparisons, and table-of-contents blocks for longer articles. Lists serve both readability and SEO structure.",
+    "useOfEmoji": false,
+    "punctuationNotes": "Frequent use of em dashes (–) for parenthetical asides and conversational interjections. Liberal use of exclamation marks to convey genuine excitement without overdoing it. Rhetorical questions are a signature device to pull readers in. Parenthetical humor in brackets or after dashes is common, e.g. '(tästä lisää myöhemmin!)'. Ellipses used sparingly for dramatic pauses.",
+    "activeVsPassive": "predominantly active"
+  },
+  "vocabulary": {
+    "brandTerms": [
+      "Dope Snow",
+      "Dope Magazine",
+      "shreddaaminen/shreddaus",
+      "Renewed",
+      "DRY Tech",
+      "FitFinder",
+      "bluesign®",
+      "Dope-tiimi",
+      "OG-mallit",
+      "Dopemainen meininki",
+      "Dope Days"
+    ],
+    "avoidTerms": [
+      "osta nyt",
+      "halpa",
+      "alennus",
+      "tarjous",
+      "edullinen",
+      "premium-brändi",
+      "luxury",
+      "ylivertainen",
+      "paras markkinoilla",
+      "vain meiltä",
+      "muovipakkaus"
+    ],
+    "preferredPhrases": [
+      "tsekkaa",
+      "eiköhän mennä asiaan",
+      "älä huoli",
+      "jatka lukemista",
+      "tutustu mallistoomme",
+      "ja hei",
+      "niin ja",
+      "no hei",
+      "mikset päivittäisi",
+      "kovan luokan",
+      "katseita kääntävä",
+      "shreddausvalmiit",
+      "hyvä fiilis taattu",
+      "vie taitosi seuraavalle tasolle",
+      "näin kehität",
+      "mahtava suoritus",
+      "kuinka sattuikaan"
+    ],
+    "ctaPatterns": [
+      "Tsekkaa/tutustu viimeisin mallistomme alta",
+      "Mikset päivittäisi kauden tyyliäsi uudella mallistollamme?",
+      "Nappaa uudet [tuote] Dope Snow'n valikoimasta!",
+      "Löydät sen alta!",
+      "Tsekkaa alta uusin droppimme"
+    ]
+  },
+  "contentPatterns": {
+    "introStyle": "Opens with an engaging hook — often a rhetorical question, a relatable scenario, or a bold statement that directly addresses the reader's situation or desire. Quickly establishes what the article covers and why it matters. The tone is conversational and inviting, as if starting a chat with a friend. Often includes a playful aside or humorous remark within the first 2–3 sentences. Almost always transitions into a soft CTA to check out the latest collection before the main content begins.",
+    "outroStyle": "Articles rarely have a formal conclusion paragraph. Instead, they end with the final piece of content (last list item, last tip, last profile answer) and rely on embedded product CTAs and collection links woven throughout the article — especially near the beginning and middle — rather than a dedicated closing section.",
+    "headlineFormula": "Three dominant patterns: (1) List/ranking format: 'Top 10 [superlative] [topic]' or 'Parhaat [topic]'; (2) How-to/guide format: 'Kuinka [action]' or 'Näin [outcome]'; (3) Product comparison: '[Product A] vs [Product B] – kumpi valita'. Headlines are direct, benefit-driven, and often include the brand name 'Dope Snow' for product-related content.",
+    "metaDescriptionStyle": "Concise and action-oriented, typically 1–2 sentences. Often starts with a question or imperative verb. Includes a playful or intriguing hook at the end (e.g. 'Ja muista ottaa snorkkeli mukaan…'). References reading the guide/article explicitly ('Lue', 'Tutustu', 'Katso'). Occasionally mixes in humor or a teaser to boost click-through.",
+    "excerptStyle": "Mirrors the article intro closely — conversational, context-setting, and ending with a teaser CTA to check the latest collection. Typically 3–5 sentences that establish the topic, hint at the value, and include a soft product plug before the 'Continue reading' link."
+  },
+  "examples": {
+    "headline": "Dope Snow Yeti vs Blizzard – kumpi anorakki valita?",
+    "intro": "Kaipaatko haastetta? Tsekkaa siinä tapauksessa maailman jyrkimpien rinteiden listauksemme – keskityimme tässä merkittyihin rinteisiin ja maksimijyrkkyysasteiden vertailuun. Muista vain teroittaa kantit etukäteen, sillä tiedossa on lähestulkoon pystysuoria kallionseinämiä. Kovan luokan rinteille tarvitset tietysti kovan luokan varusteet. Mikset päivittäisi kauden tyyliäsi uudella mallistollamme?",
+    "bodyParagraph": "Freestyle-laskemisesta inspiroitunut Blizzard on saatavilla etuvetoketjullisena tai anorakkiversiona, joista molemmissa on mukavasti tilaa kerrospukeutumiseen. Kevyt, kahteen suuntaan joustava kangas tarjoaa maksimaalisen liikkuvuuden niin parkissa jibbailua kuin terassin aurinkotuolissa otettuja päikkäreitä varten. Takin väljyyttä voi tarvittaessa säätää kätevän helman kiristysnauhan avulla.",
+    "metaDescription": "Haaveiletko loputtomasta puuterista? Tutustu oppaaseemme ja lue maailman lumisimmat laskettelukeskukset. Ja muista ottaa snorkkeli mukaan…"
+  },
+  "systemPrompt": "You are an expert localisation specialist working exclusively for Dope Snow.\n\nBRAND VOICE BRIEF:\nYou are writing for Dope Snow, a ski and snowboard apparel brand that speaks like an enthusiastic, knowledgeable friend in the snow sports community. The tone is casual, energetic, and warm — never corporate, never pushy. Use second-person address ('sinä') freely and first-person plural ('me') to include the brand as part of the crew. Open articles with hooks: rhetorical questions, relatable scenarios, or bold statements. Weave in humor naturally through parenthetical asides, em dashes, and playful remarks — but never at the reader's expense. Use action-oriented language and snow sports slang like 'shreddaaminen', 'tsekkaa', 'droppimme', 'jibbailua', 'puuteri', and 'ländääminen'. Avoid hard-sell language ('osta nyt', 'halpa', 'tarjous') — instead, integrate product CTAs as natural, helpful suggestions ('Mikset päivittäisi…', 'Tsekkaa alta…'). Be technically accurate when discussing gear specs, materials, or techniques, but explain everything accessibly. Always be inclusive and encouraging regardless of skill level. The brand's distinctive edge is combining genuine mountain culture credibility with a playful, community-first voice that makes readers feel like insiders, not consumers.\n\nCORE RULES:\n1. Always write in the target language — never mix languages.\n2. Preserve the brand's personality and tone exactly as described in the brief above.\n3. Adapt idioms and cultural references for the target locale — do not translate them literally.\n4. Maintain all brand terms exactly as specified; do not translate brand names or product names unless an official localised version exists.\n5. Keep the same structural rhythm as the source — if the original is punchy and short, the translation must be too.\n6. SEO fields (meta title, meta description, focus keyword) must be naturally optimised for the target locale's search behaviour, not just translated word-for-word.\n7. The slug should be a clean, lowercase, hyphenated URL-safe string in the target language."
+}

@@ -107,6 +107,15 @@ export interface LocaleMeta {
   polylangCode: string;
   /** Cultural localisation notes for the AI */
   culturalNotes: string;
+  /**
+   * When true, the localizer applies a hard vocabulary override block that
+   * prohibits banned terms regardless of what the brand profile says.
+   * Set to true for locales with no human reviewer assigned — the editor will
+   * still flag violations for review, but the localizer won't produce them in
+   * the first place. Set to false when a human reviewer is in the loop and can
+   * make the final call on borderline language.
+   */
+  strictMode: boolean;
 }
 
 export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
@@ -114,6 +123,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'Swedish',
     nativeName: 'Svenska',
     polylangCode: 'SV',
+    strictMode: false, // human reviewer assigned
     culturalNotes:
       'Swedish readers value directness and simplicity (lagom). Avoid over-the-top superlatives. Sustainability and outdoor lifestyle resonate strongly. Use informal "du" form.',
   },
@@ -121,6 +131,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'French',
     nativeName: 'Français',
     polylangCode: 'FR',
+    strictMode: true, // no human reviewer yet
     culturalNotes:
       'French readers appreciate elegance and style. Use "vous" for brand communications unless the brand is explicitly youth-oriented. Avoid anglicisms where a good French equivalent exists.',
   },
@@ -128,6 +139,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'German',
     nativeName: 'Deutsch',
     polylangCode: 'DE',
+    strictMode: true, // no human reviewer yet
     culturalNotes:
       'German readers value precision, quality, and technical accuracy. Be specific about product features. Use "Sie" form for formal tone. Compound nouns are fine but avoid overly long sentences.',
   },
@@ -135,6 +147,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'Dutch',
     nativeName: 'Nederlands',
     polylangCode: 'NL',
+    strictMode: true, // no human reviewer yet
     culturalNotes:
       'Dutch readers appreciate directness and a no-nonsense approach. Informal "je/jij" is common in marketing. Humour and self-deprecation can work well.',
   },
@@ -142,6 +155,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'Spanish',
     nativeName: 'Español',
     polylangCode: 'ES',
+    strictMode: true, // no human reviewer yet
     culturalNotes:
       'Use European Spanish (Spain). Informal "tú" is fine for sports/outdoor brands. Passion and energy resonate well. Avoid Latin American idioms.',
   },
@@ -149,6 +163,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'Italian',
     nativeName: 'Italiano',
     polylangCode: 'IT',
+    strictMode: false, // human reviewer assigned
     culturalNotes:
       'Italian readers respond to style, passion, and quality craftsmanship. Use "tu" for youth/sports brands. Italians appreciate warmth and expressiveness.',
   },
@@ -156,6 +171,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'Finnish',
     nativeName: 'Suomi',
     polylangCode: 'FI',
+    strictMode: false, // human reviewer assigned
     culturalNotes:
       'Finnish readers value authenticity, understatement, and practicality. Avoid hype and exaggeration. Nature and outdoor life are strong cultural touchstones. Use "sinä" (informal).',
   },
@@ -163,6 +179,7 @@ export const LOCALE_META: Record<LocaleCode, LocaleMeta> = {
     name: 'Danish',
     nativeName: 'Dansk',
     polylangCode: 'DA',
+    strictMode: true, // no human reviewer yet
     culturalNotes:
       'Danish readers value simplicity, hygge, and unpretentious quality. Informal "du" throughout. Scandinavian design sensibility — clean and purposeful.',
   },

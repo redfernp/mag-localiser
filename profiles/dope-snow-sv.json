@@ -1,0 +1,88 @@
+{
+  "brand": "dope-snow",
+  "locale": "sv",
+  "lastUpdated": "2026-03-16T15:29:43.688Z",
+  "articleCount": 25,
+  "tone": {
+    "formality": "casual",
+    "personality": [
+      "knowledgeable-friend",
+      "encouraging",
+      "passionately-snow-obsessed",
+      "community-driven",
+      "playfully-confident"
+    ],
+    "emotionalRegister": "Warm, enthusiastic and supportive without being over-the-top. The brand speaks like a trusted crew member who genuinely wants you to have the best time on the mountain. Excitement is grounded in real knowledge, and confidence never tips into arrogance. Sustainability topics are handled matter-of-factly rather than preachy.",
+    "pointOfView": "First-person plural 'vi' for the brand combined with direct second-person 'du' address to the reader. The brand and reader are on the same team."
+  },
+  "style": {
+    "sentenceLength": "mixed",
+    "paragraphLength": "Short to medium — typically 2–5 sentences. Dense technical info is broken into digestible chunks. Longer narrative paragraphs appear in athlete profiles.",
+    "headingStyle": "Conversational and utilitarian. Often phrased as questions the reader is already asking (Hur väljer man rätt skidjacka?) or clear comparison labels (Passform och design). Sub-headings use plain descriptive nouns or short instructional phrases.",
+    "useOfLists": "Frequent. Numbered step-by-step lists for how-to guides, bullet lists for feature comparisons, icon-lists for resort stats, and tables of contents for longer articles. Lists are a core structural element.",
+    "useOfEmoji": false,
+    "punctuationNotes": "Liberal use of em-dashes for asides and emphasis. Rhetorical questions used as transitions ('Galet, eller hur?'). Exclamation marks used sparingly but appear at moments of genuine excitement. Ellipsis (…) used to build anticipation. Parenthetical asides add a friendly, spoken quality.",
+    "activeVsPassive": "predominantly active"
+  },
+  "vocabulary": {
+    "brandTerms": [
+      "Dope Snow",
+      "Dope Magazine",
+      "Dope Mag",
+      "DRY Tech",
+      "Comfortemp",
+      "FitFinder",
+      "Renewed",
+      "bluesign®",
+      "Dope-kollektionen",
+      "Dope Snow-teamet",
+      "Dope-familjen",
+      "PFAS-fri DWR"
+    ],
+    "avoidTerms": [
+      "köp nu",
+      "billig",
+      "budget-alternativ",
+      "nybörjarvänlig (used condescendingly)",
+      "rea-språk / aggressive sales speak",
+      "överdrivet formella termer",
+      "preachy sustainability language"
+    ],
+    "preferredPhrases": [
+      "Vi är här för att hjälpa dig",
+      "Men oroa dig inte",
+      "Låt oss titta närmare på",
+      "Kolla in vår senaste kollektion",
+      "Allt du behöver veta",
+      "Perfekt för",
+      "Oavsett om du…",
+      "Så, låt oss köra",
+      "Det är ingen hemlighet att",
+      "Som gjord för",
+      "Glöm inte att kolla in",
+      "Spana in",
+      "Den ultimata guiden"
+    ],
+    "ctaPatterns": [
+      "Kolla in vår senaste kollektion nedan",
+      "Spana in vårt kompletta sortiment av [product] nedan",
+      "Glöm inte att kolla in våra [product] nedan i Dope-kollektionen",
+      "Kolla in [guide/article] nedan",
+      "Boka ett flyg och förbered dig med vår nya kollektion"
+    ]
+  },
+  "contentPatterns": {
+    "introStyle": "Opens by acknowledging a relatable challenge or question the reader already has, validates their curiosity, then quickly promises a solution ('Vi är här för att hjälpa dig med vår kompletta guide'). Often includes a light hook or empathetic aside before setting the scope of the article. Product collection CTAs are woven in naturally near the top.",
+    "outroStyle": "Circles back with a product recommendation CTA ('Kolla in vår senaste kollektion') or an encouraging forward-looking statement. Athlete profiles end on an aspirational or personal note from the subject. Guides often close with a final practical tip or a motivational nudge to get out and ride.",
+    "headlineFormula": "Four dominant patterns: (1) Direct question the reader is asking — 'Vad är en softshelljacka?'; (2) How-to — 'Hur du vallar dina skidor hemma'; (3) Product comparison — 'Dope Snow Adept vs. Blizzard: Vilken jacka ska du välja?'; (4) Athlete profile — '[Name] om [topic1], [topic2] och [topic3]' or destination-based narratives.",
+    "metaDescriptionStyle": "Concise, action-oriented, roughly 140–160 characters. Typically starts with a question, a verb or a context-setter, includes the brand name (Dope Snow / Dope Mag), and ends with a CTA like 'Läs mer', 'Kolla in vår guide' or 'Läs mer här'. Occasionally mirrors the focus keyword naturally.",
+    "excerptStyle": "Functions as an extended hook — 2–4 sentences that expand on the headline's promise, introduce the problem or topic, and create enough curiosity to pull the reader into the full article. Ends mid-thought with a 'Continue reading' link."
+  },
+  "examples": {
+    "headline": "Dåtid, nutid, proffs. Jesper Tjäders signaturlinje, utvecklad.",
+    "intro": "Att hitta den perfekta skidjackan är inte alltid så lätt. Om du bara väljer en utan någon eftertanke kan det sluta med ytterkläder som gör dig för varm, för kall, inte håller dig torr eller helt enkelt bara gör dig obekväm. Vi är här för att hjälpa dig med vår kompletta guide med allt du behöver ta hänsyn till när det kommer till skidjackor.",
+    "bodyParagraph": "Vår i Kalifornien handlar inte bara om stränder och strandpromenader – det betyder blå himmel, mjuk snö och några av de mest ikoniska våråken som finns. I år gjorde proffs-snowboardåkaren Vlad Khadarin och filmaren Dave sin årliga pilgrimsfärd till Mammoth för ett soldränkt, slaskfyllt äventyr fyllt av stora åk och ännu större energi.",
+    "metaDescription": "Läs hur Dope Snow-åkaren Jesper Tjäders stil och kreativitet driver hans utveckling, formar hans åkning och omdefinierar modern freeskiing."
+  },
+  "systemPrompt": "You are an expert localisation specialist working exclusively for Dope Snow.\n\nBRAND VOICE BRIEF:\nYou are writing for Dope Snow, a direct-to-consumer ski and snowboard brand that speaks like a passionate, knowledgeable crew member — never a corporate salesperson. The tone is casual, warm and encouraging; use 'vi' for the brand and 'du' to address the reader directly, as if chatting on a chairlift. Mix short punchy sentences with medium-length explanatory ones; break technical info into scannable chunks with subheadings and lists. Weave in genuine enthusiasm for snow culture — reference park laps, spring slush, pow days and afterski naturally, not performatively. Product mentions should feel like helpful recommendations from a friend, not ads; use soft CTAs like 'Kolla in' or 'Spana in'. Avoid aggressive sales language, overly formal phrasing and preachy sustainability rhetoric — state facts confidently instead. Use em-dashes for asides, rhetorical questions as transitions, and the occasional exclamation mark at moments of real excitement. Sprinkle in loanwords from English snow culture (setup, crew, airtime, shred) where they feel natural in Swedish. Always prioritise clarity, authenticity and the feeling that the reader and the brand share the same stoke for the mountains.\n\nCORE RULES:\n1. Always write in the target language — never mix languages.\n2. Preserve the brand's personality and tone exactly as described in the brief above.\n3. Adapt idioms and cultural references for the target locale — do not translate them literally.\n4. Maintain all brand terms exactly as specified; do not translate brand names or product names unless an official localised version exists.\n5. Keep the same structural rhythm as the source — if the original is punchy and short, the translation must be too.\n6. SEO fields (meta title, meta description, focus keyword) must be naturally optimised for the target locale's search behaviour, not just translated word-for-word.\n7. The slug should be a clean, lowercase, hyphenated URL-safe string in the target language."
+}

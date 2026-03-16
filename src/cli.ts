@@ -13,23 +13,19 @@ import 'dotenv/config';
 import { Command } from 'commander';
 import chalk from 'chalk';
 import ora from 'ora';
-import { writeFileSync, mkdirSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
 
 import { BRANDS, LOCALE_META } from './config/brands.js';
 import { fetchPostsForProfiling, fetchPostBySlug, fetchAllSlugs } from './graphql/client.js';
 import { buildBrandVoiceProfile } from './agents/profiler.js';
 import { localiseArticle } from './agents/localizer.js';
 import { loadProfile, profileExists } from './storage/profiles.js';
+import { saveOutput } from './utils/output.js';
 import type { BrandKey, LocaleCode, LocalisedArticle } from './types/index.js';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUTPUT_DIR = join(__dirname, '../output');
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function validateBrand(brand: string): BrandKey {
+
   if (!(brand in BRANDS)) {
     console.error(chalk.red(`Unknown brand "${brand}". Valid: ${Object.keys(BRANDS).join(', ')}`));
     process.exit(1);
@@ -43,117 +39,6 @@ function validateLocale(locale: string): LocaleCode {
     process.exit(1);
   }
   return locale as LocaleCode;
-}
-
-function saveOutput(article: LocalisedArticle): string {
-  const dir = join(OUTPUT_DIR, article.brand, article.sourceSlug);
-  mkdirSync(dir, { recursive: true });
-  const path = join(dir, `${article.targetLocale}.json`);
-  writeFileSync(path, JSON.stringify(article, null, 2), 'utf-8');
-
-  // Also write a human-readable text file
-  const txtPath = join(dir, `${article.targetLocale}.txt`);
-  writeFileSync(txtPath, buildTextExport(article), 'utf-8');
-
-  return path;
-}
-
-function stripHtmlForExport(html: string): string {
-  return html
-    .replace(/<\/p>/gi, '\n\n')
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<\/h[1-6]>/gi, '\n\n')
-    .replace(/<\/li>/gi, '\n')
-    .replace(/<li[^>]*>/gi, '  • ')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-}
-
-function buildTextExport(article: LocalisedArticle): string {
-  const r = article.editorReview;
-  const approvedLabel = r.approved ? '✓ APPROVED' : '✗ NEEDS REVIEW';
-  const severityIcon = (s: string) => s === 'error' ? '[ERROR]' : s === 'warning' ? '[WARN]' : '[INFO]';
-
-  const lines: string[] = [];
-
-  lines.push('═'.repeat(72));
-  lines.push(`BRAND:   ${article.brand.toUpperCase()}`);
-  lines.push(`LOCALE:  ${article.targetLocale.toUpperCase()}`);
-  lines.push(`SOURCE:  ${article.sourceSlug}`);
-  lines.push(`GENERATED: ${article.generatedAt}`);
-  lines.push('═'.repeat(72));
-
-  lines.push('');
-  lines.push('── ARTICLE ──────────────────────────────────────────────────────────');
-  lines.push('');
-  lines.push(`TITLE`);
-  lines.push(article.title);
-  lines.push('');
-  lines.push(`SLUG`);
-  lines.push(article.slug);
-  lines.push('');
-  lines.push(`EXCERPT`);
-  lines.push(article.excerpt);
-  lines.push('');
-  lines.push(`CONTENT`);
-  lines.push(stripHtmlForExport(article.content));
-
-  lines.push('');
-  lines.push('── SEO ──────────────────────────────────────────────────────────────');
-  lines.push('');
-  lines.push(`Meta Title:        ${article.seo.title}`);
-  lines.push(`Meta Description:  ${article.seo.metaDesc}`);
-  lines.push(`Focus Keyword:     ${article.seo.focuskw}`);
-  lines.push(`OG Title:          ${article.seo.opengraphTitle}`);
-  lines.push(`OG Description:    ${article.seo.opengraphDescription}`);
-  lines.push(`Twitter Title:     ${article.seo.twitterTitle}`);
-  lines.push(`Twitter Desc:      ${article.seo.twitterDescription}`);
-
-  lines.push('');
-  lines.push('── EDITOR REVIEW ────────────────────────────────────────────────────');
-  lines.push('');
-  lines.push(`Overall Score:     ${r.overallScore}/100  ${approvedLabel}`);
-  lines.push(`Brand Voice:       ${r.scores.brandVoiceAdherence}/100`);
-  lines.push(`Translation:       ${r.scores.translationAccuracy}/100`);
-  lines.push(`Cultural Fit:      ${r.scores.culturalFit}/100`);
-  lines.push(`SEO:               ${r.scores.seoOptimisation}/100`);
-  lines.push(`Readability:       ${r.scores.readability}/100`);
-
-  lines.push('');
-  lines.push(`Summary: ${r.summary}`);
-
-  if (r.flags.length) {
-    lines.push('');
-    lines.push('Flags:');
-    r.flags.forEach((f) => {
-      lines.push(`  ${severityIcon(f.severity)} [${f.category}] ${f.description}`);
-      if (f.sourceText) lines.push(`    Source:     ${f.sourceText}`);
-      if (f.translatedText) lines.push(`    Translated: ${f.translatedText}`);
-      if (f.suggestion) lines.push(`    Fix:        ${f.suggestion}`);
-    });
-  }
-
-  if (r.inlineComments.length) {
-    lines.push('');
-    lines.push('Inline Comments:');
-    r.inlineComments.forEach((c) => {
-      lines.push(`  [${c.section}] "${c.originalText.slice(0, 80)}${c.originalText.length > 80 ? '…' : ''}"`);
-      lines.push(`    ${c.comment}`);
-      if (c.revisedSuggestion) lines.push(`    → ${c.revisedSuggestion}`);
-    });
-  }
-
-  lines.push('');
-  lines.push('═'.repeat(72));
-
-  return lines.join('\n');
 }
 
 function printReviewSummary(article: LocalisedArticle): void {

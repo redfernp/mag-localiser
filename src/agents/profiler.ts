@@ -13,6 +13,59 @@ import { saveProfile } from '../storage/profiles.js';
 
 const client = new Anthropic();
 
+/**
+ * Fix unescaped double-quotes inside JSON string values.
+ * Claude sometimes uses "word" as quotation marks in German/French prose, breaking JSON.parse.
+ * Strategy: scan char-by-char; when inside a string, a " is a closing quote only if the next
+ * non-whitespace char is a JSON structural character (:  ,  }  ]).  Otherwise escape it.
+ */
+function repairInnerQuotes(json: string): string {
+  let result = '';
+  let inString = false;
+  let escaped = false;
+
+  for (let i = 0; i < json.length; i++) {
+    const char = json[i];
+
+    if (escaped) {
+      result += char;
+      escaped = false;
+      continue;
+    }
+
+    if (char === '\\') {
+      result += char;
+      escaped = true;
+      continue;
+    }
+
+    if (char === '"') {
+      if (!inString) {
+        inString = true;
+        result += char;
+      } else {
+        // Peek ahead past whitespace to see what follows
+        let j = i + 1;
+        while (j < json.length && ' \t\n\r'.includes(json[j])) j++;
+        const next = json[j];
+        if (next === ':' || next === ',' || next === '}' || next === ']' || j >= json.length) {
+          // Structural closing quote
+          inString = false;
+          result += char;
+        } else {
+          // Inner content quote — escape it
+          result += '\\"';
+        }
+      }
+      continue;
+    }
+
+    result += char;
+  }
+
+  return result;
+}
+
 /** Strip HTML tags for cleaner analysis. */
 function stripHtml(html: string): string {
   return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -42,7 +95,14 @@ ${articlesText}
 
 ---
 
-Return a JSON object with EXACTLY this structure (no markdown, no prose, just the JSON):
+Return a JSON object with EXACTLY this structure (no markdown, no prose, just the JSON).
+
+CRITICAL JSON RULES:
+- All array values must be plain quoted strings — no parenthetical notes, no annotations, no extra text outside the quotes
+- Wrong: ["Anfänger" (stattdessen 'jedes Level')]
+- Right: ["Anfänger", "jedes Level"]
+- Never add explanatory text after a closing quote inside an array
+- All string values must be valid JSON — use only straight ASCII double quotes for JSON structure
 
 {
   "tone": {
@@ -112,9 +172,7 @@ export async function buildBrandVoiceProfile(
 
   const stream = client.messages.stream({
     model: 'claude-opus-4-6',
-    max_tokens: 4096,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    thinking: { type: 'adaptive' } as any,
+    max_tokens: 8192,
     messages: [{ role: 'user', content: prompt }],
   });
 
@@ -131,6 +189,26 @@ export async function buildBrandVoiceProfile(
   // Strip any accidental markdown fences
   rawJson = rawJson.replace(/^```(?:json)?\n?/m, '').replace(/\n?```$/m, '').trim();
 
+  // Replace typographic/curly quotation marks with straight ASCII equivalents
+  // so they don't break JSON.parse (common in DE/FR: „text", «text»)
+  rawJson = rawJson
+    .replace(/„/g, "'")   // German lower-9 open quote → single quote
+    .replace(/\u201C/g, "'")  // Left double quotation mark → single quote
+    .replace(/\u201D/g, "'")  // Right double quotation mark → single quote
+    .replace(/«/g, "'")   // French guillemet open → single quote
+    .replace(/»/g, "'");  // French guillemet close → single quote
+
+  // Remove parenthetical annotations that Claude sometimes adds after quoted array items,
+  // e.g. "Anfänger" (stattdessen 'jedes Level') → "Anfänger"
+  // These appear as: "someterm" (annotation text) followed by , or ]
+  rawJson = rawJson.replace(/"([^"]*?)"\s*\([^)]*\)\s*(?=[,\]])/g, '"$1"');
+
+  // Fix unescaped double-quotes inside JSON string values.
+  // Claude sometimes uses "word" or "phrase" as quotation marks within German/French prose,
+  // which breaks JSON.parse. We scan the raw text and escape any " that isn't a structural
+  // JSON quote (i.e. followed by whitespace+colon, comma, } or ]).
+  rawJson = repairInnerQuotes(rawJson);
+
   let parsed: {
     tone: BrandVoiceProfile['tone'];
     style: BrandVoiceProfile['style'];
@@ -142,8 +220,11 @@ export async function buildBrandVoiceProfile(
 
   try {
     parsed = JSON.parse(rawJson);
-  } catch {
-    throw new Error(`Failed to parse brand voice JSON from Claude:\n${rawJson.slice(0, 500)}`);
+  } catch (e) {
+    // Write full output to a temp file for debugging
+    const { writeFileSync } = await import('fs');
+    writeFileSync('profiler-debug.json', rawJson, 'utf-8');
+    throw new Error(`Failed to parse brand voice JSON from Claude (full output written to profiler-debug.json):\n${rawJson.slice(0, 800)}`);
   }
 
   const profile: BrandVoiceProfile = {

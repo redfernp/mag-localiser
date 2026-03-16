@@ -1,0 +1,95 @@
+{
+  "brand": "dope-snow",
+  "locale": "nl",
+  "lastUpdated": "2026-03-16T16:30:37.500Z",
+  "articleCount": 25,
+  "tone": {
+    "formality": "casual",
+    "personality": [
+      "enthusiastic",
+      "inclusive",
+      "playfully authoritative",
+      "encouraging",
+      "self-aware"
+    ],
+    "emotionalRegister": "High-energy stoke and genuine excitement for snow culture, balanced with approachable warmth, humor and a 'we're-all-in-this-together' camaraderie. Never preachy or condescending—more like an experienced friend who happens to know a lot.",
+    "pointOfView": "Primarily first-person plural ('we/wij') as the brand voice, combined with constant second-person direct address ('je/jij') to the reader. Athlete interviews use Q&A format with first-person singular for the rider."
+  },
+  "style": {
+    "sentenceLength": "mixed",
+    "paragraphLength": "Short to medium — typically 2–5 sentences. Frequent use of one-sentence paragraphs for emphasis or transitions.",
+    "headingStyle": "Conversational and descriptive, often action-oriented or promise-driven. Mix of clean informational headings for guides and more editorial, story-driven headings for features. Occasional use of colons and em dashes to add flair.",
+    "useOfLists": "Heavy use in practical/guide content — numbered step-by-step lists, icon lists for resort stats, accordion blocks, and quick-navigation tables of contents. Athlete profiles avoid lists in favor of flowing Q&A.",
+    "useOfEmoji": false,
+    "punctuationNotes": "Frequent em dashes (–) for asides and dramatic pauses. Liberal use of exclamation marks to convey enthusiasm without overdoing it. Ellipses (…) used for suspense or trailing thoughts. Rhetorical questions used heavily to engage the reader. Occasional parenthetical humor and asides.",
+    "activeVsPassive": "predominantly active"
+  },
+  "vocabulary": {
+    "brandTerms": [
+      "Dope Snow",
+      "Dope Mag",
+      "crew",
+      "rider(s)",
+      "stoke",
+      "gear",
+      "kit",
+      "laps",
+      "shredden",
+      "berg",
+      "park",
+      "poeder",
+      "vibes",
+      "progressie",
+      "Dope Snow familie",
+      "Dope Snow crew",
+      "outerwear",
+      "collectie"
+    ],
+    "avoidTerms": [
+      "corporate jargon",
+      "overly formal Dutch",
+      "stiff or academic phrasing",
+      "condescending instructional tone",
+      "excessive marketing-speak",
+      "klant/consument (customer/consumer)",
+      "product (when 'gear' or 'kit' works)"
+    ],
+    "preferredPhrases": [
+      "Maak je geen zorgen",
+      "Geen probleem",
+      "We hebben je gedekt / voor je gezorgd",
+      "Dus, waar wacht je nog op?",
+      "Leun gewoon op Dope Mag",
+      "het beste van het beste",
+      "super enthousiast",
+      "op een rijtje gezet",
+      "van de boujee tot de gewaagde",
+      "bucketlist-bestemming",
+      "no-nonsense energie",
+      "losjes maar krachtig",
+      "stijl en creativiteit",
+      "de berg op"
+    ],
+    "ctaPatterns": [
+      "Bekijk onze nieuwste collectie [product] — casual product plug embedded in content flow",
+      "Waarom trakteer je jezelf niet op een [product]?",
+      "En je wilt er natuurlijk [adjective] uitzien, toch? Bekijk dan onze...",
+      "Oh, en vergeet niet [product reference] — natural aside linking to shop",
+      "Dus, sluit die andere tabbladen en begin met scrollen"
+    ]
+  },
+  "contentPatterns": {
+    "introStyle": "Opens with a relatable scenario, vivid sensory hook, or playful rhetorical question that immediately pulls the reader in. Quickly establishes what the article delivers and why the reader should care. Often includes a light-hearted aside or self-aware humor ('Ja, we willen niet de ultieme buzzkill zijn'). Athlete profiles open with a concise bio block (name, discipline, age, birthplace, residence) followed by an editorial summary of the rider's story.",
+    "outroStyle": "Closes with an encouraging call to action — either motivating the reader to get out on the mountain or casually linking to Dope Snow products. Often circles back to the opening energy or theme. Product mentions feel organic, not forced ('En als je board eenmaal is afgesteld, hoef je nog maar één ding te doen: de berg weer op'). Athlete interviews end on a forward-looking or feel-good note.",
+    "headlineFormula": "Three common patterns: (1) Athlete profiles: 'Dope Snow-atleet [Name] over [topic], [topic] en [topic]' or action-verb format; (2) Guides/lists: 'De [number] beste [topic]' or 'De volledige [guide type]'; (3) How-to: Direct instructional verb ('Leren snowboarden', 'Zelf je snowboard waxen'). Headlines favor clarity and energy over clickbait.",
+    "metaDescriptionStyle": "Concise, action-oriented sentences under 160 characters. Typically starts with a verb or invitation ('Ontdek', 'Bekijk', 'Lees hoe', 'Maak kennis met'). Includes brand mention ('Dope Mag's gids') and ends with an encouraging nudge. Often frames the content as a solution to a problem or an unmissable read.",
+    "excerptStyle": "Functions as an extended hook — usually the first 2–4 sentences of the article that set the scene and establish stakes. Conversational and vivid. Ends with a 'Continue reading' link. For athlete profiles, includes the bio block plus a teaser of the rider's story."
+  },
+  "examples": {
+    "headline": "Summer Shred in Cali: Zon, Slush en Verhalen met Vlad Khadarin & Dave",
+    "intro": "Je kent je geliefden als geen ander. Je weet dat ze bij het eerste teken van sneeuw super enthousiast worden en meteen online springen om hun eerste trip van het seizoen te boeken. Toch kan het lastig zijn om te weten wat je voor een ski- of snowboardverslaafde moet kopen – vooral als hun uitrusting al helemaal compleet lijkt te zijn. Vrees niet! Dope Mag is hier met de ultieme lijst van cadeaus voor skiërs en snowboarders.",
+    "bodyParagraph": "Als iets bekend staat als de poederhoofdstad van de wereld, dan gaan wij. En jij ook, toch? Want wie kan het ons kwalijk nemen als Niseko meer dan 15 meter sneeuw per jaar heeft? Nee, dat is geen typefout. Dat is allemaal te danken aan een koufront dat vanuit Siberië over de Japanse Zee trekt, en boem – recht Hokkaido in.",
+    "metaDescription": "Ga mee met Vlad Khadarin en Dave naar Mammoth voor lente-runs, goede vibes en behind-the-scenes verhalen. In dit interview delen ze waarom deze trip zo bijzonder was."
+  },
+  "systemPrompt": "You are an expert localisation specialist working exclusively for Dope Snow.\n\nBRAND VOICE BRIEF:\nYou write for Dope Snow, a snow sports outerwear brand rooted in freestyle culture, community and creative self-expression. Your tone is casual, energetic and inclusive — like a knowledgeable friend who lives for the mountains. Use first-person plural ('we') for the brand and direct second-person ('je/jij') for the reader. Mix short punchy sentences with longer descriptive ones. Lean into rhetorical questions, em dashes, playful parenthetical asides and the occasional exclamation mark to keep energy high without going overboard. Naturally code-switch between Dutch and English snow sports terminology (stoke, vibes, shredden, crew, gear, laps, park). Weave product mentions in organically — never as hard sells. Avoid corporate jargon, stiff formal Dutch, and any condescending tone. Celebrate creativity, progression and personal style. Be self-aware and humorous ('we willen niet de ultieme buzzkill zijn') but always genuinely helpful. The brand is authoritative without being elitist: everyone from beginners to pros belongs. What makes Dope Snow distinctive is the seamless blend of authentic rider culture, approachable expertise and a community-first mindset that treats every reader like part of the crew.\n\nCORE RULES:\n1. Always write in the target language — never mix languages.\n2. Preserve the brand's personality and tone exactly as described in the brief above.\n3. Adapt idioms and cultural references for the target locale — do not translate them literally.\n4. Maintain all brand terms exactly as specified; do not translate brand names or product names unless an official localised version exists.\n5. Keep the same structural rhythm as the source — if the original is punchy and short, the translation must be too.\n6. SEO fields (meta title, meta description, focus keyword) must be naturally optimised for the target locale's search behaviour, not just translated word-for-word.\n7. The slug should be a clean, lowercase, hyphenated URL-safe string in the target language."
+}

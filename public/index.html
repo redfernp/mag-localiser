@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mag Localiser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sidebar-bg: #f4f4f5;
+      --sidebar-border: #e4e4e7;
+      --sidebar-text: #3f3f46;
+      --sidebar-muted: #a1a1aa;
+      --sidebar-active-bg: #e4e4e7;
+      --sidebar-active-text: #18181b;
+      --sidebar-label: #a1a1aa;
+
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --border: #e4e4e7;
+      --text: #18181b;
+      --text-muted: #71717a;
+
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+
+      --green: #16a34a;
+      --green-bg: #f0fdf4;
+      --green-border: #bbf7d0;
+
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --red-border: #fecaca;
+
+      --blue-bg: #eff6ff;
+      --blue-border: #bfdbfe;
+
+      --radius: 6px;
+      --sidebar-w: 220px;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+      display: flex;
+    }
+
+    /* ── Sidebar ── */
+    aside {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-border);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      padding: 18px 16px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--sidebar-border);
+    }
+
+    .sidebar-logo-mark {
+      width: 26px;
+      height: 26px;
+      background: var(--text);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-mark svg { color: white; }
+
+    .sidebar-logo-name {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text);
+      letter-spacing: -.2px;
+    }
+
+    .sidebar-logo-name span { color: var(--text-muted); font-weight: 400; }
+
+    .sidebar-section {
+      padding: 16px 12px 6px;
+    }
+
+    .sidebar-section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      color: var(--sidebar-label);
+      padding: 0 4px;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: var(--radius);
+      color: var(--sidebar-text);
+      font-size: 13px;
+      cursor: pointer;
+      transition: background .1s;
+      user-select: none;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .sidebar-item:hover { background: var(--sidebar-active-bg); }
+    .sidebar-item.active { background: var(--sidebar-active-bg); color: var(--sidebar-active-text); font-weight: 500; }
+
+    .sidebar-item-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--sidebar-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sidebar-item.active .sidebar-item-icon { color: var(--text); }
+
+    .sidebar-count {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--sidebar-muted);
+      background: var(--sidebar-border);
+      padding: 1px 6px;
+      border-radius: 10px;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--sidebar-border);
+      margin: 8px 12px;
+    }
+
+    /* brand select */
+    .brand-select-wrap {
+      padding: 12px;
+      border-bottom: 1px solid var(--sidebar-border);
+    }
+
+    .brand-select-wrap select {
+      width: 100%;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 10px;
+      border: 1px solid var(--sidebar-border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      padding-right: 28px;
+    }
+
+    .brand-select-wrap select:focus { border-color: var(--primary); }
+
+    .sidebar-stats {
+      padding: 12px;
+      margin-top: auto;
+      border-top: 1px solid var(--sidebar-border);
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .stat-row strong { color: var(--text); font-weight: 600; }
+
+    /* ── Main ── */
+    .main-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .main-header {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      background: var(--surface);
+    }
+
+    .main-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .main-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    input[type="search"] {
+      font-family: inherit;
+      font-size: 12px;
+      padding: 7px 12px 7px 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      width: 220px;
+      outline: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 10px center;
+    }
+
+    input[type="search"]:focus { border-color: var(--primary); }
+
+    .main-body {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    /* ── Table ── */
+    table { width: 100%; border-collapse: collapse; }
+
+    thead th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--text-muted);
+      padding: 10px 24px;
+      background: #fafafa;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      white-space: nowrap;
+    }
+
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fafafa; }
+
+    td { padding: 10px 24px; vertical-align: middle; }
+
+    .slug-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      display: block;
+      max-width: 380px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* ── Badges ── */
+    .locales-cell { display: flex; gap: 5px; flex-wrap: wrap; }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .3px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .badge-done {
+      background: var(--green-bg);
+      color: var(--green);
+      border-color: var(--green-border);
+    }
+
+    .badge-missing {
+      background: #f4f4f5;
+      color: #71717a;
+      border-color: #e4e4e7;
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .badge-missing:hover {
+      background: var(--blue-bg);
+      color: var(--primary);
+      border-color: var(--blue-border);
+    }
+
+    .badge-running {
+      background: var(--blue-bg);
+      color: var(--primary);
+      border-color: var(--blue-border);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    .badge-error {
+      background: var(--red-bg);
+      color: var(--red);
+      border-color: var(--red-border);
+      cursor: pointer;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+
+    /* ── Empty / loading ── */
+    .empty-row td {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-muted);
+    }
+
+    .empty-row td strong { display: block; color: var(--text); margin-bottom: 4px; }
+
+    /* ── Drawer ── */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.2);
+      z-index: 200;
+    }
+
+    .overlay.open { display: block; }
+
+    .drawer {
+      position: fixed;
+      right: 0; top: 0; bottom: 0;
+      width: 580px;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      box-shadow: -8px 0 32px rgba(0,0,0,.08);
+      display: flex;
+      flex-direction: column;
+      z-index: 201;
+      transform: translateX(100%);
+      transition: transform .22s ease;
+    }
+
+    .drawer.open { transform: translateX(0); }
+
+    .drawer-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .drawer-title {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text);
+      word-break: break-all;
+    }
+
+    .drawer-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .drawer-close:hover { background: var(--border); color: var(--text); }
+
+    .drawer-status {
+      padding: 10px 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      background: #fafafa;
+    }
+
+    .spinner {
+      width: 13px; height: 13px;
+      border: 2px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin .65s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .stream-output {
+      font-family: 'Inter', monospace;
+      font-size: 12px;
+      line-height: 1.75;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* ── Review ── */
+    .review-panel { margin-top: 4px; }
+
+    .review-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .big-score {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .big-score.green { color: var(--green); }
+    .big-score.amber { color: var(--amber); }
+    .big-score.red   { color: var(--red); }
+
+    .big-score span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
+
+    .verdict {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .verdict-ok  { background: var(--green-bg); color: var(--green); }
+    .verdict-rev { background: var(--amber-bg); color: var(--amber); }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .score-item {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 6px;
+      text-align: center;
+    }
+
+    .score-item .val { font-size: 17px; font-weight: 600; }
+    .score-item .lbl { font-size: 9px; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); margin-top: 2px; }
+
+    .review-summary {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.65;
+      padding: 12px;
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .flags { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+
+    .flag {
+      padding: 9px 12px;
+      border-radius: var(--radius);
+      border-left: 3px solid;
+      font-size: 12px;
+    }
+
+    .flag-error   { background: var(--red-bg);  border-color: var(--red); }
+    .flag-warning { background: var(--amber-bg); border-color: var(--amber); }
+    .flag-suggestion { background: var(--blue-bg); border-color: var(--primary); }
+
+    .flag-cat {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .flag-desc { color: var(--text); line-height: 1.5; }
+    .flag-fix  { margin-top: 3px; color: var(--text-muted); font-style: italic; font-size: 11px; }
+
+    /* ── Footer ── */
+    .drawer-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      background: #fafafa;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background .12s;
+      white-space: nowrap;
+    }
+
+    .btn-primary { background: var(--text); color: white; }
+    .btn-primary:hover { background: #27272a; }
+    .btn-primary:disabled { opacity: .4; cursor: default; }
+    .btn-ghost { background: none; color: var(--text-muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { background: var(--border); color: var(--text); }
+
+    .powered-by {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── Profile cards ── */
+    .profile-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .profile-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .profile-locale {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .profile-locale-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .profile-status {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+
+    .profile-status-built { background: var(--green-bg); color: var(--green); }
+    .profile-status-missing { background: #f4f4f5; color: #71717a; }
+    .profile-status-building { background: var(--blue-bg); color: var(--primary); animation: pulse 1.4s ease-in-out infinite; }
+
+    .profile-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .profile-traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .trait-tag {
+      font-size: 10px;
+      background: #f4f4f5;
+      color: var(--text-muted);
+      padding: 2px 7px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .profile-strict {
+      font-size: 10px;
+      color: var(--amber);
+      background: var(--amber-bg);
+      padding: 2px 7px;
+      border-radius: 20px;
+      border: 1px solid #fde68a;
+    }
+
+    .profile-card .btn { align-self: flex-start; font-size: 11px; padding: 5px 12px; }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside>
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-mark">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        <path d="M2 17l10 5 10-5"/>
+        <path d="M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <span class="sidebar-logo-name">Mag <span>Localiser</span></span>
+  </div>
+
+  <div class="brand-select-wrap">
+    <select id="brand-select"></select>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Locales</div>
+    <div id="locale-nav"></div>
+  </div>
+
+  <div class="sidebar-divider"></div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Tools</div>
+    <button class="sidebar-item" id="nav-articles" onclick="showView('articles')">
+      <span class="sidebar-item-icon">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        </svg>
+      </span>
+      Articles
+    </button>
+    <button class="sidebar-item" id="nav-profiles" onclick="showView('profiles')">
+      <span class="sidebar-item-icon">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/>
+        </svg>
+      </span>
+      Voice Profiles
+    </button>
+    <button class="sidebar-item" onclick="window.open('https://github.com/redfernp/mag-localiser','_blank')">
+      <span class="sidebar-item-icon">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+      </span>
+      GitHub
+    </button>
+  </div>
+
+  <div class="sidebar-stats" id="sidebar-stats"></div>
+</aside>
+
+<!-- Main -->
+<div class="main-wrap">
+  <div class="main-header">
+    <div>
+      <div class="main-title" id="main-title">Articles</div>
+      <div class="main-subtitle" id="main-subtitle">Loading…</div>
+    </div>
+    <input type="search" id="search" placeholder="Filter articles…" />
+  </div>
+
+  <div class="main-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:44%">Article slug</th>
+          <th>Localisation status</th>
+        </tr>
+      </thead>
+      <tbody id="articles-body">
+        <tr class="empty-row"><td colspan="2"><strong>Loading</strong>Fetching articles…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Profiles view -->
+<div class="main-wrap" id="profiles-view" style="display:none">
+  <div class="main-header">
+    <div>
+      <div class="main-title">Voice Profiles</div>
+      <div class="main-subtitle" id="profiles-subtitle">Brand voice profiles built from existing published articles</div>
+    </div>
+  </div>
+  <div class="main-body">
+    <div id="profiles-grid" style="padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;"></div>
+  </div>
+</div>
+
+<!-- Drawer overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div>
+      <div class="drawer-title" id="drawer-title"></div>
+      <div class="drawer-meta" id="drawer-meta"></div>
+    </div>
+    <button class="drawer-close" id="drawer-close">×</button>
+  </div>
+  <div class="drawer-status" id="drawer-status">
+    <div class="spinner" id="status-spinner"></div>
+    <span id="status-text">Starting…</span>
+  </div>
+  <div class="drawer-body" id="drawer-body">
+    <div class="stream-output" id="stream-output"></div>
+    <div class="review-panel" id="review-panel" style="display:none"></div>
+  </div>
+  <div class="drawer-footer">
+    <button class="btn btn-primary" id="download-btn" disabled>Download .txt</button>
+    <button class="btn btn-ghost" id="drawer-close-btn">Close</button>
+    <span class="powered-by">claude-opus-4-6</span>
+  </div>
+</div>
+
+<script>
+  let state = {
+    brand: '',
+    articles: [],
+    locales: [],
+    localeMeta: {},
+    activeLocale: null,
+    filter: '',
+    currentJob: null,
+  };
+
+  // ── View switching ────────────────────────────────────────────────────────────
+  let currentView = 'articles';
+
+  function showView(view) {
+    currentView = view;
+    document.querySelector('.main-wrap:not(#profiles-view)').style.display =
+      view === 'articles' ? 'flex' : 'none';
+    document.getElementById('profiles-view').style.display =
+      view === 'profiles' ? 'flex' : 'none';
+    document.getElementById('locale-nav').style.display =
+      view === 'articles' ? 'block' : 'none';
+    document.getElementById('nav-articles').classList.toggle('active', view === 'articles');
+    document.getElementById('nav-profiles').classList.toggle('active', view === 'profiles');
+    if (view === 'profiles') loadProfiles(state.brand);
+  }
+
+  // ── Profiles ──────────────────────────────────────────────────────────────────
+  async function loadProfiles(brand) {
+    const grid = document.getElementById('profiles-grid');
+    grid.innerHTML = '<p style="color:var(--text-muted);font-size:13px">Loading profiles…</p>';
+    const res = await fetch(`/api/profiles?brand=${brand}`);
+    const { profiles } = await res.json();
+    renderProfiles(profiles);
+  }
+
+  function renderProfiles(profiles) {
+    const grid = document.getElementById('profiles-grid');
+    grid.innerHTML = profiles.map(p => {
+      const statusClass = p.exists ? 'profile-status-built' : 'profile-status-missing';
+      const statusLabel = p.exists ? 'Built' : 'Missing';
+      const age = p.lastUpdated
+        ? `Updated ${new Date(p.lastUpdated).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}`
+        : null;
+      const traits = p.personality.slice(0, 4).map(t =>
+        `<span class="trait-tag">${t}</span>`).join('');
+      const strictBadge = p.strictMode
+        ? '<span class="profile-strict">Strict mode</span>' : '';
+
+      return `<div class="profile-card" id="profile-card-${p.locale}">
+        <div class="profile-card-header">
+          <div>
+            <div class="profile-locale">${p.name}</div>
+            <div class="profile-locale-sub">${p.locale.toUpperCase()}${p.formality ? ' · ' + p.formality : ''}</div>
+          </div>
+          <span class="profile-status ${statusClass}" id="profile-status-${p.locale}">${statusLabel}</span>
+        </div>
+        ${p.exists && p.personality.length ? `<div class="profile-traits">${traits}${strictBadge}</div>` : ''}
+        ${age ? `<div class="profile-meta"><span>${age} · ${p.articleCount} articles</span></div>` : ''}
+        <button class="btn btn-ghost" onclick="buildProfile('${p.locale}', '${p.name}')">
+          ${p.exists ? 'Rebuild profile' : 'Build profile'}
+        </button>
+      </div>`;
+    }).join('');
+  }
+
+  function buildProfile(locale, name) {
+    const statusEl = document.getElementById(`profile-status-${locale}`);
+    const card = document.getElementById(`profile-card-${locale}`);
+    if (statusEl) {
+      statusEl.className = 'profile-status profile-status-building';
+      statusEl.textContent = 'Building…';
+    }
+
+    const es = new EventSource(`/api/profile/build?brand=${state.brand}&locale=${locale}`);
+
+    es.addEventListener('status', e => {
+      const { message } = JSON.parse(e.data);
+      if (statusEl) statusEl.textContent = message.slice(0, 28) + '…';
+    });
+
+    es.addEventListener('done', e => {
+      es.close();
+      const { profile } = JSON.parse(e.data);
+      if (statusEl) {
+        statusEl.className = 'profile-status profile-status-built';
+        statusEl.textContent = 'Built';
+      }
+      // Refresh the card
+      loadProfiles(state.brand);
+    });
+
+    es.addEventListener('error', e => {
+      es.close();
+      if (statusEl) {
+        statusEl.className = 'profile-status profile-status-missing';
+        statusEl.textContent = 'Failed';
+      }
+    });
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────────────────
+  async function init() {
+    const res = await fetch('/api/brands');
+    const brands = await res.json();
+
+    const sel = document.getElementById('brand-select');
+    brands.forEach(b => {
+      const opt = document.createElement('option');
+      opt.value = b.key;
+      opt.textContent = b.name;
+      sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change', () => {
+      if (currentView === 'profiles') loadProfiles(sel.value);
+      else loadArticles(sel.value);
+    });
+    if (brands.length) { sel.value = brands[0].key; loadArticles(brands[0].key); }
+  }
+
+  // ── Load articles ─────────────────────────────────────────────────────────────
+  async function loadArticles(brand) {
+    state.brand = brand;
+    state.articles = [];
+    state.activeLocale = null;
+    document.getElementById('articles-body').innerHTML =
+      '<tr class="empty-row"><td colspan="2"><strong>Loading</strong>Fetching articles…</td></tr>';
+
+    const res = await fetch(`/api/articles?brand=${brand}`);
+    const data = await res.json();
+    state.articles = data.articles;
+    state.locales = data.locales;
+    state.localeMeta = data.localeMeta;
+
+    renderLocaleNav();
+    renderStats();
+    renderTable();
+
+    const total = data.articles.length;
+    document.getElementById('main-subtitle').textContent = `${total} articles`;
+  }
+
+  // ── Locale nav ────────────────────────────────────────────────────────────────
+  function renderLocaleNav() {
+    const nav = document.getElementById('locale-nav');
+    const all = [{ key: null, label: 'All locales' }, ...state.locales.map(l => ({
+      key: l,
+      label: state.localeMeta[l]?.name ?? l.toUpperCase(),
+    }))];
+
+    nav.innerHTML = all.map(item => {
+      const active = state.activeLocale === item.key;
+      const missing = item.key
+        ? state.articles.filter(a => !a.translated.includes(item.key)).length
+        : state.articles.length;
+
+      return `<button class="sidebar-item ${active ? 'active' : ''}"
+        onclick="setLocaleFilter(${item.key ? `'${item.key}'` : 'null'})">
+        <span class="sidebar-item-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </span>
+        ${item.label}
+        ${missing > 0 ? `<span class="sidebar-count">${missing}</span>` : ''}
+      </button>`;
+    }).join('');
+  }
+
+  function setLocaleFilter(locale) {
+    state.activeLocale = locale;
+    renderLocaleNav();
+    renderTable();
+    document.getElementById('main-title').textContent =
+      locale ? (state.localeMeta[locale]?.name ?? locale.toUpperCase()) : 'Articles';
+  }
+
+  // ── Stats ─────────────────────────────────────────────────────────────────────
+  function renderStats() {
+    const total = state.articles.length;
+    const totalSlots = total * state.locales.length;
+    const done = state.articles.reduce((sum, a) => sum + a.translated.length, 0);
+    const pct = totalSlots > 0 ? Math.round((done / totalSlots) * 100) : 0;
+
+    document.getElementById('sidebar-stats').innerHTML = `
+      <div class="stat-row"><span>Articles</span><strong>${total}</strong></div>
+      <div class="stat-row"><span>Localised</span><strong>${done} / ${totalSlots}</strong></div>
+      <div class="stat-row"><span>Coverage</span><strong>${pct}%</strong></div>
+    `;
+  }
+
+  // ── Render table ──────────────────────────────────────────────────────────────
+  function renderTable() {
+    const body = document.getElementById('articles-body');
+    const filter = state.filter.toLowerCase();
+    const localeFilter = state.activeLocale;
+
+    let rows = state.articles.filter(a => !filter || a.slug.includes(filter));
+
+    if (localeFilter) {
+      rows = rows.filter(a => !a.translated.includes(localeFilter));
+    }
+
+    if (!rows.length) {
+      body.innerHTML = `<tr class="empty-row"><td colspan="2"><strong>${filter || localeFilter ? 'No matches' : 'No articles'}</strong>Try a different filter</td></tr>`;
+      return;
+    }
+
+    const displayLocales = localeFilter ? [localeFilter] : state.locales;
+
+    body.innerHTML = rows.map(a => {
+      const badges = displayLocales.map(l => {
+        const done = a.translated.includes(l);
+        const meta = state.localeMeta[l] ?? { name: l, strictMode: false };
+        const cls = done ? 'badge-done' : 'badge-missing';
+        const title = done ? `${meta.name} — translated` : `Localise to ${meta.name}${meta.strictMode ? ' (strict)' : ''}`;
+        const click = done ? '' : `onclick="startLocalise('${a.slug}','${l}')"`;
+        return `<span class="badge ${cls}" data-slug="${a.slug}" data-locale="${l}" title="${title}" ${click}>${l.toUpperCase()}</span>`;
+      }).join('');
+
+      return `<tr>
+        <td><span class="slug-text" title="${a.slug}">${a.slug}</span></td>
+        <td class="locales-cell">${badges}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  // ── Search ────────────────────────────────────────────────────────────────────
+  document.getElementById('search').addEventListener('input', e => {
+    state.filter = e.target.value;
+    renderTable();
+  });
+
+  // ── Localise ──────────────────────────────────────────────────────────────────
+  function startLocalise(slug, locale) {
+    const meta = state.localeMeta[locale] ?? { name: locale, strictMode: false };
+    setBadgeState(slug, locale, 'running');
+
+    document.getElementById('drawer-title').textContent = slug;
+    document.getElementById('drawer-meta').textContent =
+      `${meta.name}${meta.strictMode ? ' · Strict mode' : ''}`;
+    document.getElementById('status-text').textContent = 'Starting…';
+    document.getElementById('status-spinner').style.display = 'block';
+    document.getElementById('stream-output').textContent = '';
+    document.getElementById('review-panel').style.display = 'none';
+    document.getElementById('download-btn').disabled = true;
+    document.getElementById('download-btn').onclick = null;
+    openDrawer();
+
+    const es = new EventSource(`/api/localise?brand=${state.brand}&slug=${encodeURIComponent(slug)}&locale=${locale}`);
+    state.currentJob = es;
+
+    es.addEventListener('status', e => {
+      document.getElementById('status-text').textContent = JSON.parse(e.data).message;
+    });
+
+    es.addEventListener('token', e => {
+      document.getElementById('stream-output').textContent += JSON.parse(e.data).token;
+      const b = document.getElementById('drawer-body');
+      b.scrollTop = b.scrollHeight;
+    });
+
+    es.addEventListener('done', e => {
+      const { article } = JSON.parse(e.data);
+      es.close();
+      document.getElementById('status-spinner').style.display = 'none';
+      document.getElementById('status-text').textContent =
+        `Complete · ${article.editorReview.overallScore}/100`;
+      document.getElementById('stream-output').textContent = '';
+      renderReview(article);
+      const btn = document.getElementById('download-btn');
+      btn.disabled = false;
+      btn.onclick = () => window.location.href = `/api/output/${state.brand}/${slug}/${locale}`;
+      setBadgeState(slug, locale, 'done');
+      const art = state.articles.find(a => a.slug === slug);
+      if (art && !art.translated.includes(locale)) art.translated.push(locale);
+      renderStats();
+      renderLocaleNav();
+    });
+
+    es.addEventListener('error', e => {
+      es.close();
+      let msg = 'Unknown error';
+      try { msg = JSON.parse(e.data).message; } catch {}
+      document.getElementById('status-spinner').style.display = 'none';
+      document.getElementById('status-text').textContent = `Error: ${msg}`;
+      setBadgeState(slug, locale, 'error');
+    });
+  }
+
+  // ── Render review ─────────────────────────────────────────────────────────────
+  function renderReview(article) {
+    const r = article.editorReview;
+    const panel = document.getElementById('review-panel');
+    const sc = r.overallScore;
+    const scoreClass = sc >= 80 ? 'green' : sc >= 60 ? 'amber' : 'red';
+    const verdictClass = r.approved ? 'verdict-ok' : 'verdict-rev';
+    const verdictLabel = r.approved ? 'Approved' : 'Needs Review';
+
+    const flags = r.flags.map(f => `
+      <div class="flag flag-${f.severity}">
+        <div class="flag-cat">${f.category}</div>
+        <div class="flag-desc">${f.description}</div>
+        ${f.suggestion ? `<div class="flag-fix">Fix: ${f.suggestion}</div>` : ''}
+      </div>`).join('');
+
+    panel.innerHTML = `
+      <div class="review-top">
+        <div class="big-score ${scoreClass}">${sc}<span>/100</span></div>
+        <span class="verdict ${verdictClass}">${verdictLabel}</span>
+      </div>
+      <div class="score-grid">
+        <div class="score-item"><div class="val">${r.scores.brandVoiceAdherence}</div><div class="lbl">Brand</div></div>
+        <div class="score-item"><div class="val">${r.scores.translationAccuracy}</div><div class="lbl">Translation</div></div>
+        <div class="score-item"><div class="val">${r.scores.culturalFit}</div><div class="lbl">Cultural</div></div>
+        <div class="score-item"><div class="val">${r.scores.seoOptimisation}</div><div class="lbl">SEO</div></div>
+        <div class="score-item"><div class="val">${r.scores.readability}</div><div class="lbl">Readability</div></div>
+      </div>
+      <div class="review-summary">${r.summary}</div>
+      ${flags ? `<div class="section-label">Flags</div><div class="flags">${flags}</div>` : ''}
+    `;
+
+    panel.style.display = 'block';
+    setTimeout(() => {
+      const b = document.getElementById('drawer-body');
+      b.scrollTop = b.scrollHeight;
+    }, 50);
+  }
+
+  // ── Badge helpers ─────────────────────────────────────────────────────────────
+  function setBadgeState(slug, locale, st) {
+    const b = document.querySelector(`.badge[data-slug="${slug}"][data-locale="${locale}"]`);
+    if (!b) return;
+    b.className = `badge badge-${st}`;
+    if (st === 'done') { b.onclick = null; }
+    else if (st === 'error') { b.onclick = () => startLocalise(slug, locale); b.title = 'Error — click to retry'; }
+    else { b.onclick = null; }
+  }
+
+  // ── Drawer ────────────────────────────────────────────────────────────────────
+  function openDrawer() {
+    document.getElementById('overlay').classList.add('open');
+    document.getElementById('drawer').classList.add('open');
+  }
+
+  function closeDrawer() {
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('drawer').classList.remove('open');
+    if (state.currentJob) { state.currentJob.close(); state.currentJob = null; }
+  }
+
+  document.getElementById('overlay').addEventListener('click', closeDrawer);
+  document.getElementById('drawer-close').addEventListener('click', closeDrawer);
+  document.getElementById('drawer-close-btn').addEventListener('click', closeDrawer);
+
+  init();
+</script>
+</body>
+</html>

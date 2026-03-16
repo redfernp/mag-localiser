@@ -108,6 +108,29 @@ export async function localiseArticle(
     } satisfies TextBlockParam);
   }
 
+  if (localeMeta.strictMode) {
+    systemBlocks.push({
+      type: 'text',
+      text: `STRICT MODE — NO HUMAN REVIEWER ASSIGNED FOR THIS LOCALE.
+
+The following rules are NON-NEGOTIABLE and override any vocabulary or examples in the brand profile above. A human will not be reviewing this output before it is used, so apply these restrictions absolutely.
+
+NEVER use the following words or their direct equivalents in the target language:
+- ultimate / ultimat / ultimativ / ultime / definitief / ultimata / ultimainen
+- perfect / perfekt / parfait / perfecte / perfetto / perfecta / täydellinen (in marketing praise contexts)
+- unbeatable / unschlagbar / imbattable / onverslaanbaar / imbattibile / imbatible
+- revolutionary / revolutionär / révolutionnaire / revolutionair / rivoluzionario / revolucionario
+- world-class / weltklasse / de classe mondiale / wereldklasse / di classe mondiale
+- innovative solution / cutting-edge / state-of-the-art / best-in-class / industry-leading / next-generation
+- dominate / conquer / crush (in marketing contexts)
+- insane (as praise)
+- purchase now / order today / click here to buy (and direct translations)
+
+If the source article contains any of these terms, replace them with grounded, specific, on-brand alternatives. Do not translate banned terms literally — rewrite the phrase.`,
+      cache_control: { type: 'ephemeral' },
+    } satisfies TextBlockParam);
+  }
+
   if (targetProfile) {
     const targetBrief = `APPROVED ${localeMeta.name.toUpperCase()} VOICE EXAMPLES (learn from these real approved translations):
 Formality in ${localeMeta.name}: ${targetProfile.tone.formality}
