@@ -24,24 +24,24 @@
       --text: #18181b;
       --text-muted: #71717a;
 
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
+      --primary: #18181b;
+      --primary-hover: #27272a;
 
       --green: #16a34a;
       --green-bg: #f0fdf4;
       --green-border: #bbf7d0;
 
-      --amber: #d97706;
+      --amber: #b45309;
       --amber-bg: #fffbeb;
 
       --red: #dc2626;
       --red-bg: #fef2f2;
       --red-border: #fecaca;
 
-      --blue-bg: #eff6ff;
-      --blue-border: #bfdbfe;
+      --blue-bg: #f4f4f5;
+      --blue-border: #d4d4d8;
 
-      --radius: 6px;
+      --radius: 8px;
       --sidebar-w: 220px;
     }
 
@@ -187,7 +187,7 @@
       padding-right: 28px;
     }
 
-    .brand-select-wrap select:focus { border-color: var(--primary); }
+    .brand-select-wrap select:focus { border-color: #18181b; outline: none; }
 
     .sidebar-stats {
       padding: 12px;
@@ -252,7 +252,7 @@
       background-position: 10px center;
     }
 
-    input[type="search"]:focus { border-color: var(--primary); }
+    input[type="search"]:focus { border-color: #18181b; outline: none; }
 
     .main-body {
       flex: 1;
@@ -325,15 +325,15 @@
     }
 
     .badge-missing:hover {
-      background: var(--blue-bg);
-      color: var(--primary);
-      border-color: var(--blue-border);
+      background: #18181b;
+      color: #fff;
+      border-color: #18181b;
     }
 
     .badge-running {
-      background: var(--blue-bg);
-      color: var(--primary);
-      border-color: var(--blue-border);
+      background: #18181b;
+      color: #fff;
+      border-color: #18181b;
       animation: pulse 1.4s ease-in-out infinite;
     }
 
@@ -437,7 +437,7 @@
     .spinner {
       width: 13px; height: 13px;
       border: 2px solid var(--border);
-      border-top-color: var(--primary);
+      border-top-color: #18181b;
       border-radius: 50%;
       animation: spin .65s linear infinite;
       flex-shrink: 0;
@@ -544,7 +544,7 @@
 
     .flag-error   { background: var(--red-bg);  border-color: var(--red); }
     .flag-warning { background: var(--amber-bg); border-color: var(--amber); }
-    .flag-suggestion { background: var(--blue-bg); border-color: var(--primary); }
+    .flag-suggestion { background: #fafafa; border-color: #d4d4d8; }
 
     .flag-cat {
       font-size: 9px;
@@ -636,7 +636,7 @@
 
     .profile-status-built { background: var(--green-bg); color: var(--green); }
     .profile-status-missing { background: #f4f4f5; color: #71717a; }
-    .profile-status-building { background: var(--blue-bg); color: var(--primary); animation: pulse 1.4s ease-in-out infinite; }
+    .profile-status-building { background: #18181b; color: #fff; animation: pulse 1.4s ease-in-out infinite; }
 
     .profile-meta {
       font-size: 11px;
@@ -671,6 +671,96 @@
     }
 
     .profile-card .btn { align-self: flex-start; font-size: 11px; padding: 5px 12px; }
+    .profile-card .btn-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+    .strict-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #fafafa; border: 1px solid #e4e4e7; border-radius: 8px; margin-top: 2px; }
+    .strict-row-text { display: flex; flex-direction: column; gap: 2px; }
+    .strict-row-label { font-size: 12px; font-weight: 500; color: #18181b; }
+    .strict-row-desc { font-size: 11px; color: #71717a; line-height: 1.4; }
+    .strict-toggle { display: flex; align-items: center; cursor: pointer; user-select: none; flex-shrink: 0; }
+    .strict-toggle input[type=checkbox] { appearance: none; width: 36px; height: 20px; background: #e4e4e7; border-radius: 99px; cursor: pointer; position: relative; transition: background .2s; flex-shrink: 0; }
+    .strict-toggle input[type=checkbox]:checked { background: #18181b; }
+    .strict-toggle input[type=checkbox]::after { content: ''; position: absolute; width: 16px; height: 16px; background: #fff; border-radius: 50%; top: 2px; left: 2px; transition: left .15s; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+    .strict-toggle input[type=checkbox]:checked::after { left: 18px; }
+    .strict-toggle input[type=checkbox]:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* ── Prompt editor modal ── */
+    .prompt-modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.35);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .prompt-modal-overlay.open { display: flex; }
+    .prompt-modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 680px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,.15);
+    }
+    .prompt-modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .prompt-modal-header h2 { font-size: 14px; font-weight: 600; }
+    .prompt-modal-header .meta { font-size: 11px; color: var(--text-muted); }
+    .prompt-modal textarea {
+      flex: 1;
+      margin: 0;
+      padding: 16px 20px;
+      border: none;
+      resize: none;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text);
+      background: #fafaf9;
+      outline: none;
+      overflow-y: auto;
+    }
+    .prompt-modal-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .prompt-modal-footer .save-note { font-size: 11px; color: var(--text-muted); margin-left: auto; }
+    .prompt-save-status { font-size: 12px; color: var(--green); display: none; }
+
+    .prompt-refine-bar {
+      display: flex;
+      gap: 8px;
+      padding: 10px 20px;
+      border-top: 1px solid var(--border);
+      background: #f9f9f7;
+    }
+    .prompt-refine-bar input {
+      flex: 1;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--surface);
+      outline: none;
+    }
+    .prompt-refine-bar input:focus { border-color: #18181b; }
+    .prompt-refine-bar input:disabled { opacity: .5; }
+    .prompt-refine-bar .btn { white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -764,7 +854,7 @@
     </div>
   </div>
   <div class="main-body">
-    <div id="profiles-grid" style="padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;"></div>
+<div id="profiles-grid" style="padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;"></div>
   </div>
 </div>
 
@@ -789,9 +879,33 @@
     <div class="review-panel" id="review-panel" style="display:none"></div>
   </div>
   <div class="drawer-footer">
-    <button class="btn btn-primary" id="download-btn" disabled>Download .txt</button>
+    <button class="btn btn-primary" id="preview-btn" disabled>Preview</button>
+    <button class="btn btn-ghost" id="download-btn" disabled>Download .txt</button>
     <button class="btn btn-ghost" id="drawer-close-btn">Close</button>
     <span class="powered-by">claude-opus-4-6</span>
+  </div>
+</div>
+
+<!-- Prompt editor modal -->
+<div class="prompt-modal-overlay" id="prompt-modal-overlay">
+  <div class="prompt-modal">
+    <div class="prompt-modal-header">
+      <div>
+        <h2 id="prompt-modal-title">Edit system prompt</h2>
+        <div class="meta" id="prompt-modal-meta"></div>
+      </div>
+    </div>
+    <textarea id="prompt-textarea" rows="20" spellcheck="false"></textarea>
+    <div class="prompt-refine-bar">
+      <input type="text" id="prompt-refine-input" placeholder='Ask Claude to change it — e.g. "never open with a question" or "remove the em dash rule"' />
+      <button class="btn btn-ghost" id="prompt-refine-btn">Refine</button>
+    </div>
+    <div class="prompt-modal-footer">
+      <button class="btn btn-primary" id="prompt-save-btn">Save</button>
+      <button class="btn btn-ghost" id="prompt-cancel-btn">Cancel</button>
+      <span class="prompt-save-status" id="prompt-save-status">Saved</span>
+      <span class="save-note">A backup is created automatically before each save</span>
+    </div>
   </div>
 </div>
 
@@ -822,7 +936,7 @@
     if (view === 'profiles') loadProfiles(state.brand);
   }
 
-  // ── Profiles ──────────────────────────────────────────────────────────────────
+// ── Profiles ──────────────────────────────────────────────────────────────────
   async function loadProfiles(brand) {
     const grid = document.getElementById('profiles-grid');
     grid.innerHTML = '<p style="color:var(--text-muted);font-size:13px">Loading profiles…</p>';
@@ -854,9 +968,21 @@
         </div>
         ${p.exists && p.personality.length ? `<div class="profile-traits">${traits}${strictBadge}</div>` : ''}
         ${age ? `<div class="profile-meta"><span>${age} · ${p.articleCount} articles</span></div>` : ''}
-        <button class="btn btn-ghost" onclick="buildProfile('${p.locale}', '${p.name}')">
-          ${p.exists ? 'Rebuild profile' : 'Build profile'}
-        </button>
+        <div class="btn-row">
+          <button class="btn btn-ghost" onclick="buildProfile('${p.locale}', '${p.name}')">
+            ${p.exists ? 'Rebuild' : 'Build profile'}
+          </button>
+          ${p.exists ? `<button class="btn btn-ghost" onclick="openPromptEditor('${p.locale}', '${p.name}')">Edit prompt</button>` : ''}
+        </div>
+        ${p.exists ? `<div class="strict-row">
+          <div class="strict-row-text">
+            <span class="strict-row-label">Strict mode</span>
+            <span class="strict-row-desc">For brand &amp; campaigns.</span>
+          </div>
+          <label class="strict-toggle">
+            <input type="checkbox" id="strict-toggle-${p.locale}" ${p.strictMode ? 'checked' : ''} onchange="toggleStrictMode('${p.locale}', this.checked)">
+          </label>
+        </div>` : ''}
       </div>`;
     }).join('');
   }
@@ -1043,6 +1169,8 @@
     document.getElementById('review-panel').style.display = 'none';
     document.getElementById('download-btn').disabled = true;
     document.getElementById('download-btn').onclick = null;
+    document.getElementById('preview-btn').disabled = true;
+    document.getElementById('preview-btn').onclick = null;
     openDrawer();
 
     const es = new EventSource(`/api/localise?brand=${state.brand}&slug=${encodeURIComponent(slug)}&locale=${locale}`);
@@ -1069,6 +1197,9 @@
       const btn = document.getElementById('download-btn');
       btn.disabled = false;
       btn.onclick = () => window.location.href = `/api/output/${state.brand}/${slug}/${locale}`;
+      const previewBtn = document.getElementById('preview-btn');
+      previewBtn.disabled = false;
+      previewBtn.onclick = () => window.open(`/api/output/${state.brand}/${slug}/${locale}/preview`, '_blank');
       setBadgeState(slug, locale, 'done');
       const art = state.articles.find(a => a.slug === slug);
       if (art && !art.translated.includes(locale)) art.translated.push(locale);
@@ -1150,6 +1281,148 @@
   document.getElementById('overlay').addEventListener('click', closeDrawer);
   document.getElementById('drawer-close').addEventListener('click', closeDrawer);
   document.getElementById('drawer-close-btn').addEventListener('click', closeDrawer);
+
+  // ── Prompt editor ──────────────────────────────────────────────────────────────
+
+  let promptEditorState = { brand: null, locale: null, name: null };
+
+  async function openPromptEditor(locale, name) {
+    promptEditorState = { brand: state.brand, locale, name };
+    const overlay = document.getElementById('prompt-modal-overlay');
+    const textarea = document.getElementById('prompt-textarea');
+    const title = document.getElementById('prompt-modal-title');
+    const meta = document.getElementById('prompt-modal-meta');
+    const saveStatus = document.getElementById('prompt-save-status');
+
+    title.textContent = `Edit system prompt — ${name}`;
+    meta.textContent = 'Loading…';
+    textarea.value = '';
+    saveStatus.style.display = 'none';
+    overlay.classList.add('open');
+
+    const res = await fetch(`/api/profile/${state.brand}/${locale}/prompt`);
+    if (!res.ok) { meta.textContent = 'Failed to load profile'; return; }
+    const { systemPrompt, lastUpdated } = await res.json();
+    textarea.value = systemPrompt;
+    meta.textContent = `Last saved: ${new Date(lastUpdated).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}`;
+  }
+
+  async function savePrompt() {
+    const { brand, locale, name } = promptEditorState;
+    const textarea = document.getElementById('prompt-textarea');
+    const saveBtn = document.getElementById('prompt-save-btn');
+    const saveStatus = document.getElementById('prompt-save-status');
+    const meta = document.getElementById('prompt-modal-meta');
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving…';
+    saveStatus.style.display = 'none';
+
+    const res = await fetch(`/api/profile/${brand}/${locale}/prompt`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ systemPrompt: textarea.value }),
+    });
+
+    saveBtn.disabled = false;
+    saveBtn.textContent = 'Save';
+
+    if (res.ok) {
+      const { lastUpdated } = await res.json();
+      meta.textContent = `Last saved: ${new Date(lastUpdated).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}`;
+      saveStatus.style.display = 'inline';
+      setTimeout(() => { saveStatus.style.display = 'none'; }, 3000);
+    } else {
+      alert('Save failed. Please try again.');
+    }
+  }
+
+  async function refinePrompt() {
+    const { brand, locale } = promptEditorState;
+    const textarea = document.getElementById('prompt-textarea');
+    const input = document.getElementById('prompt-refine-input');
+    const btn = document.getElementById('prompt-refine-btn');
+    const instruction = input.value.trim();
+    if (!instruction) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Refining…';
+    input.disabled = true;
+    textarea.disabled = true;
+
+    const original = textarea.value;
+    textarea.value = '';
+
+    const es = new EventSource(`/api/profile/${brand}/${locale}/prompt/refine?` +
+      new URLSearchParams({ systemPrompt: original, instruction }));
+
+    // POST via fetch+SSE workaround: use fetch with a readable stream instead
+    es.close(); // close the GET attempt, use fetch streaming below
+
+    try {
+      const res = await fetch(`/api/profile/${brand}/${locale}/prompt/refine`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ systemPrompt: original, instruction }),
+      });
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      textarea.value = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const parts = buffer.split('\n\n');
+        buffer = parts.pop();
+        for (const part of parts) {
+          const lines = part.split('\n');
+          const eventLine = lines.find(l => l.startsWith('event:'));
+          const dataLine = lines.find(l => l.startsWith('data:'));
+          if (!dataLine) continue;
+          const data = JSON.parse(dataLine.slice(5));
+          const event = eventLine ? eventLine.slice(7).trim() : 'message';
+          if (event === 'token') textarea.value += data.token;
+          if (event === 'error') { textarea.value = original; alert('Refinement failed: ' + data.message); }
+        }
+      }
+    } catch (err) {
+      textarea.value = original;
+      alert('Refinement failed: ' + err.message);
+    }
+
+    input.value = '';
+    input.disabled = false;
+    textarea.disabled = false;
+    btn.disabled = false;
+    btn.textContent = 'Refine';
+  }
+
+  async function toggleStrictMode(locale, value) {
+    const checkbox = document.getElementById(`strict-toggle-${locale}`);
+    checkbox.disabled = true;
+    await fetch(`/api/profile/${state.brand}/${locale}/strict-mode`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ strictMode: value }),
+    });
+    checkbox.disabled = false;
+  }
+
+  document.getElementById('prompt-refine-btn').onclick = refinePrompt;
+  document.getElementById('prompt-refine-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') refinePrompt();
+  });
+
+  document.getElementById('prompt-save-btn').onclick = savePrompt;
+  document.getElementById('prompt-cancel-btn').onclick = () =>
+    document.getElementById('prompt-modal-overlay').classList.remove('open');
+  document.getElementById('prompt-modal-overlay').onclick = (e) => {
+    if (e.target === e.currentTarget)
+      document.getElementById('prompt-modal-overlay').classList.remove('open');
+  };
 
   init();
 </script>

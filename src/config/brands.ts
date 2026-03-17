@@ -74,7 +74,7 @@ Prefer: Gear up. / Get ready for the next storm. / Find your setup. / Build your
 
 export const BRANDS: Record<BrandKey, BrandConfig> = {
   'dope-snow': {
-    name: 'Dope Snow',
+    name: 'Dope',
     endpoint: process.env.DOPE_SNOW_GRAPHQL_URL ?? '',
     locales: ['sv', 'fr', 'de', 'nl', 'it', 'fi'],
     voiceGuide: DOPE_SNOW_VOICE_GUIDE,
@@ -83,7 +83,7 @@ export const BRANDS: Record<BrandKey, BrandConfig> = {
       : undefined,
   },
   montecwear: {
-    name: 'Montecwear',
+    name: 'Montec',
     endpoint: process.env.MONTECWEAR_GRAPHQL_URL ?? '',
     locales: ['sv', 'fr', 'de', 'nl', 'it', 'fi'],
     auth: process.env.MONTECWEAR_WP_USER

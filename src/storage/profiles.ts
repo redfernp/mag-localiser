@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import type { BrandKey, BrandVoiceProfile } from '../types/index.js';
@@ -20,6 +20,14 @@ export function loadProfile(brand: BrandKey, locale: string): BrandVoiceProfile 
 export function saveProfile(profile: BrandVoiceProfile): void {
   mkdirSync(PROFILES_DIR, { recursive: true });
   writeFileSync(profilePath(profile.brand, profile.locale), JSON.stringify(profile, null, 2), 'utf-8');
+}
+
+/** Back up the current profile before an editor overwrites the system prompt. */
+export function backupProfile(brand: BrandKey, locale: string): void {
+  const src = profilePath(brand, locale);
+  if (!existsSync(src)) return;
+  const ts = new Date().toISOString().replace(/[:.]/g, '-');
+  copyFileSync(src, join(PROFILES_DIR, `${brand}-${locale}.${ts}.bak.json`));
 }
 
 export function profileExists(brand: BrandKey, locale: string): boolean {

@@ -53,6 +53,11 @@ export interface BrandVoiceProfile {
   locale: string;
   lastUpdated: string;
   articleCount: number;
+  /**
+   * Per-profile strict mode override. When set, takes precedence over LOCALE_META.strictMode.
+   * Undefined means fall back to the LOCALE_META default.
+   */
+  strictModeOverride?: boolean;
 
   tone: {
     formality: 'casual' | 'semi-formal' | 'formal';
